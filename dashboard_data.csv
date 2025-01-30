@@ -1,0 +1,1264 @@
+"","year","country","region","variable","value","hc_key"
+"1",2011,"IND","Andhra Pradesh","elec_cons",667,"in-ap"
+"2",2011,"IND","Arunachal Pradesh","elec_cons",854,"in-ar"
+"3",2011,"IND","Assam","elec_cons",415,"in-as"
+"4",2011,"IND","Bihar","elec_cons",473,"in-br"
+"5",2011,"IND","Chandigarh","elec_cons",2681,"in-ch"
+"6",2011,"IND","Chhattisgarh","elec_cons",408,"in-ct"
+"7",2011,"IND","Dadra and Nagar Haveli","elec_cons",999,"in-dn"
+"8",2011,"IND","Daman and Diu","elec_cons",733,"in-dd"
+"9",2011,"IND","Delhi","elec_cons",1990,"in-dl"
+"10",2011,"IND","Goa","elec_cons",2427,"in-ga"
+"11",2011,"IND","Gujarat","elec_cons",1136,"in-gj"
+"12",2011,"IND","Haryana","elec_cons",812,"in-hr"
+"13",2011,"IND","Himachal Pradesh","elec_cons",1312,"in-hp"
+"14",2011,"IND","Jammu and Kashmir","elec_cons",1359,"in-jk"
+"15",2011,"IND","Jharkhand","elec_cons",394,"in-jh"
+"16",2011,"IND","Karnataka","elec_cons",332,"in-ka"
+"17",2011,"IND","Kerala","elec_cons",1025,"in-kl"
+"18",2011,"IND","Madhya Pradesh","elec_cons",618,"in-mp"
+"19",2011,"IND","Maharashtra","elec_cons",808,"in-mh"
+"20",2011,"IND","Manipur","elec_cons",809,"in-mn"
+"21",2011,"IND","Meghalaya","elec_cons",860,"in-ml"
+"22",2011,"IND","Mizoram","elec_cons",812,"in-mz"
+"23",2011,"IND","Nagaland","elec_cons",976,"in-nl"
+"24",2011,"IND","Orissa","elec_cons",879,"in-or"
+"25",2011,"IND","Pondicherry","elec_cons",1956,"in-py"
+"26",2011,"IND","Punjab","elec_cons",1134,"in-pb"
+"27",2011,"IND","Rajasthan","elec_cons",769,"in-rj"
+"28",2011,"IND","Sikkim","elec_cons",1950,"in-sk"
+"29",2011,"IND","Tamil Nadu","elec_cons",1278,"in-tn"
+"30",2011,"IND","Tripura","elec_cons",783,"in-tr"
+"31",2011,"IND","Uttar Pradesh","elec_cons",942,"in-up"
+"32",2011,"IND","Uttaranchal","elec_cons",1180,"in-ut"
+"33",2011,"IND","West Bengal","elec_cons",989,"in-wb"
+"34",2011,"IND","Andhra Pradesh","gas_cons",692,"in-ap"
+"35",2011,"IND","Arunachal Pradesh","gas_cons",1082,"in-ar"
+"36",2011,"IND","Assam","gas_cons",938,"in-as"
+"37",2011,"IND","Bihar","gas_cons",292,"in-br"
+"38",2011,"IND","Chandigarh","gas_cons",1683,"in-ch"
+"39",2011,"IND","Chhattisgarh","gas_cons",624,"in-ct"
+"40",2011,"IND","Dadra and Nagar Haveli","gas_cons",462,"in-dn"
+"41",2011,"IND","Daman and Diu","gas_cons",1016,"in-dd"
+"42",2011,"IND","Delhi","gas_cons",1568,"in-dl"
+"43",2011,"IND","Goa","gas_cons",2088,"in-ga"
+"44",2011,"IND","Gujarat","gas_cons",1086,"in-gj"
+"45",2011,"IND","Haryana","gas_cons",851,"in-hr"
+"46",2011,"IND","Himachal Pradesh","gas_cons",791,"in-hp"
+"47",2011,"IND","Jammu and Kashmir","gas_cons",1131,"in-jk"
+"48",2011,"IND","Jharkhand","gas_cons",741,"in-jh"
+"49",2011,"IND","Karnataka","gas_cons",1150,"in-ka"
+"50",2011,"IND","Kerala","gas_cons",636,"in-kl"
+"51",2011,"IND","Madhya Pradesh","gas_cons",610,"in-mp"
+"52",2011,"IND","Maharashtra","gas_cons",1142,"in-mh"
+"53",2011,"IND","Manipur","gas_cons",1748,"in-mn"
+"54",2011,"IND","Meghalaya","gas_cons",440,"in-ml"
+"55",2011,"IND","Mizoram","gas_cons",1561,"in-mz"
+"56",2011,"IND","Nagaland","gas_cons",2978,"in-nl"
+"57",2011,"IND","Orissa","gas_cons",493,"in-or"
+"58",2011,"IND","Pondicherry","gas_cons",1554,"in-py"
+"59",2011,"IND","Punjab","gas_cons",1271,"in-pb"
+"60",2011,"IND","Rajasthan","gas_cons",888,"in-rj"
+"61",2011,"IND","Sikkim","gas_cons",1990,"in-sk"
+"62",2011,"IND","Tamil Nadu","gas_cons",663,"in-tn"
+"63",2011,"IND","Tripura","gas_cons",843,"in-tr"
+"64",2011,"IND","Uttar Pradesh","gas_cons",1273,"in-up"
+"65",2011,"IND","Uttaranchal","gas_cons",730,"in-ut"
+"66",2011,"IND","West Bengal","gas_cons",688,"in-wb"
+"67",2011,"IND","Andhra Pradesh","totbiom_cons",1520,"in-ap"
+"68",2011,"IND","Arunachal Pradesh","totbiom_cons",186,"in-ar"
+"69",2011,"IND","Assam","totbiom_cons",1123,"in-as"
+"70",2011,"IND","Bihar","totbiom_cons",993,"in-br"
+"71",2011,"IND","Chandigarh","totbiom_cons",370,"in-ch"
+"72",2011,"IND","Chhattisgarh","totbiom_cons",1305,"in-ct"
+"73",2011,"IND","Dadra and Nagar Haveli","totbiom_cons",344,"in-dn"
+"74",2011,"IND","Daman and Diu","totbiom_cons",1080,"in-dd"
+"75",2011,"IND","Delhi","totbiom_cons",552,"in-dl"
+"76",2011,"IND","Goa","totbiom_cons",5,"in-ga"
+"77",2011,"IND","Gujarat","totbiom_cons",517,"in-gj"
+"78",2011,"IND","Haryana","totbiom_cons",1073,"in-hr"
+"79",2011,"IND","Himachal Pradesh","totbiom_cons",1583,"in-hp"
+"80",2011,"IND","Jammu and Kashmir","totbiom_cons",1259,"in-jk"
+"81",2011,"IND","Jharkhand","totbiom_cons",1691,"in-jh"
+"82",2011,"IND","Karnataka","totbiom_cons",2521,"in-ka"
+"83",2011,"IND","Kerala","totbiom_cons",2702,"in-kl"
+"84",2011,"IND","Madhya Pradesh","totbiom_cons",1703,"in-mp"
+"85",2011,"IND","Maharashtra","totbiom_cons",1290,"in-mh"
+"86",2011,"IND","Manipur","totbiom_cons",249,"in-mn"
+"87",2011,"IND","Meghalaya","totbiom_cons",1468,"in-ml"
+"88",2011,"IND","Mizoram","totbiom_cons",994,"in-mz"
+"89",2011,"IND","Nagaland","totbiom_cons",574,"in-nl"
+"90",2011,"IND","Orissa","totbiom_cons",1634,"in-or"
+"91",2011,"IND","Pondicherry","totbiom_cons",647,"in-py"
+"92",2011,"IND","Punjab","totbiom_cons",870,"in-pb"
+"93",2011,"IND","Rajasthan","totbiom_cons",1561,"in-rj"
+"94",2011,"IND","Sikkim","totbiom_cons",674,"in-sk"
+"95",2011,"IND","Tamil Nadu","totbiom_cons",754,"in-tn"
+"96",2011,"IND","Tripura","totbiom_cons",3514,"in-tr"
+"97",2011,"IND","Uttar Pradesh","totbiom_cons",1238,"in-up"
+"98",2011,"IND","Uttaranchal","totbiom_cons",606,"in-ut"
+"99",2011,"IND","West Bengal","totbiom_cons",1503,"in-wb"
+"100",2014,"GTM","Alta Verapaz","elec_cons",337,"gt-av"
+"101",2014,"GTM","Baja Verapaz","elec_cons",570,"gt-bv"
+"102",2014,"GTM","Chimaltenango","elec_cons",580,"gt-cm"
+"103",2014,"GTM","Chiquimula","elec_cons",633,"gt-cq"
+"104",2014,"GTM","El Progreso","elec_cons",705,"gt-pr"
+"105",2014,"GTM","Escuintla","elec_cons",1025,"gt-es"
+"106",2014,"GTM","Guatemala","elec_cons",1255,NA
+"107",2014,"GTM","Huehuetenango","elec_cons",532,"gt-hu"
+"108",2014,"GTM","Izabal","elec_cons",1066,"gt-iz"
+"109",2014,"GTM","Jalapa","elec_cons",609,"gt-ja"
+"110",2014,"GTM","Jutiapa","elec_cons",1013,"gt-ju"
+"111",2014,"GTM","Petén","elec_cons",820,"gt-pe"
+"112",2014,"GTM","Quetzaltenango","elec_cons",1036,"gt-qz"
+"113",2014,"GTM","Quiché","elec_cons",521,"gt-qc"
+"114",2014,"GTM","Retalhuleu","elec_cons",695,"gt-re"
+"115",2014,"GTM","Sacatepéquez","elec_cons",669,"gt-sa"
+"116",2014,"GTM","San Marcos","elec_cons",626,"gt-sm"
+"117",2014,"GTM","Santa Rosa","elec_cons",664,"gt-sr"
+"118",2014,"GTM","Sololá","elec_cons",384,"gt-so"
+"119",2014,"GTM","Suchitepéquez","elec_cons",730,"gt-su"
+"120",2014,"GTM","Totonicapán","elec_cons",532,"gt-to"
+"121",2014,"GTM","Zacapa","elec_cons",935,"gt-za"
+"122",2014,"GTM","Alta Verapaz","gas_cons",346,"gt-av"
+"123",2014,"GTM","Baja Verapaz","gas_cons",723,"gt-bv"
+"124",2014,"GTM","Chimaltenango","gas_cons",529,"gt-cm"
+"125",2014,"GTM","Chiquimula","gas_cons",283,"gt-cq"
+"126",2014,"GTM","El Progreso","gas_cons",858,"gt-pr"
+"127",2014,"GTM","Escuintla","gas_cons",817,"gt-es"
+"128",2014,"GTM","Guatemala","gas_cons",1241,NA
+"129",2014,"GTM","Huehuetenango","gas_cons",474,"gt-hu"
+"130",2014,"GTM","Izabal","gas_cons",1225,"gt-iz"
+"131",2014,"GTM","Jalapa","gas_cons",400,"gt-ja"
+"132",2014,"GTM","Jutiapa","gas_cons",689,"gt-ju"
+"133",2014,"GTM","Petén","gas_cons",473,"gt-pe"
+"134",2014,"GTM","Quetzaltenango","gas_cons",865,"gt-qz"
+"135",2014,"GTM","Quiché","gas_cons",269,"gt-qc"
+"136",2014,"GTM","Retalhuleu","gas_cons",688,"gt-re"
+"137",2014,"GTM","Sacatepéquez","gas_cons",1104,"gt-sa"
+"138",2014,"GTM","San Marcos","gas_cons",258,"gt-sm"
+"139",2014,"GTM","Santa Rosa","gas_cons",714,"gt-sr"
+"140",2014,"GTM","Sololá","gas_cons",410,"gt-so"
+"141",2014,"GTM","Suchitepéquez","gas_cons",661,"gt-su"
+"142",2014,"GTM","Totonicapán","gas_cons",420,"gt-to"
+"143",2014,"GTM","Zacapa","gas_cons",1045,"gt-za"
+"144",2014,"GTM","Alta Verapaz","totbiom_cons",5015,"gt-av"
+"145",2014,"GTM","Baja Verapaz","totbiom_cons",6933,"gt-bv"
+"146",2014,"GTM","Chimaltenango","totbiom_cons",4078,"gt-cm"
+"147",2014,"GTM","Chiquimula","totbiom_cons",4344,"gt-cq"
+"148",2014,"GTM","El Progreso","totbiom_cons",4649,"gt-pr"
+"149",2014,"GTM","Escuintla","totbiom_cons",5642,"gt-es"
+"150",2014,"GTM","Guatemala","totbiom_cons",1443,NA
+"151",2014,"GTM","Huehuetenango","totbiom_cons",7447,"gt-hu"
+"152",2014,"GTM","Izabal","totbiom_cons",4992,"gt-iz"
+"153",2014,"GTM","Jalapa","totbiom_cons",5965,"gt-ja"
+"154",2014,"GTM","Jutiapa","totbiom_cons",4961,"gt-ju"
+"155",2014,"GTM","Petén","totbiom_cons",4496,"gt-pe"
+"156",2014,"GTM","Quetzaltenango","totbiom_cons",4766,"gt-qz"
+"157",2014,"GTM","Quiché","totbiom_cons",5292,"gt-qc"
+"158",2014,"GTM","Retalhuleu","totbiom_cons",5405,"gt-re"
+"159",2014,"GTM","Sacatepéquez","totbiom_cons",3395,"gt-sa"
+"160",2014,"GTM","San Marcos","totbiom_cons",3830,"gt-sm"
+"161",2014,"GTM","Santa Rosa","totbiom_cons",4543,"gt-sr"
+"162",2014,"GTM","Sololá","totbiom_cons",4154,"gt-so"
+"163",2014,"GTM","Suchitepéquez","totbiom_cons",5556,"gt-su"
+"164",2014,"GTM","Totonicapán","totbiom_cons",5535,"gt-to"
+"165",2014,"GTM","Zacapa","totbiom_cons",4891,"gt-za"
+"166",2014,"ZAF","Eastern Cape","elec_cons",3126,"za-ec"
+"167",2014,"ZAF","Free State","elec_cons",3896,"za-fs"
+"168",2014,"ZAF","Gauteng","elec_cons",5778,"za-gt"
+"169",2014,"ZAF","KwaZulu-Natal","elec_cons",3522,"za-nl"
+"170",2014,"ZAF","Limpopo","elec_cons",3015,"za-lp"
+"171",2014,"ZAF","Mpumalanga","elec_cons",3889,"za-mp"
+"172",2014,"ZAF","North West","elec_cons",2968,"za-nw"
+"173",2014,"ZAF","Northern Cape","elec_cons",4143,"za-nc"
+"174",2014,"ZAF","Western Cape","elec_cons",5874,"za-wc"
+"175",2014,"ZAF","Eastern Cape","gas_cons",2,"za-ec"
+"176",2014,"ZAF","Free State","gas_cons",3,"za-fs"
+"177",2014,"ZAF","Gauteng","gas_cons",3,"za-gt"
+"178",2014,"ZAF","KwaZulu-Natal","gas_cons",3,"za-nl"
+"179",2014,"ZAF","Limpopo","gas_cons",2,"za-lp"
+"180",2014,"ZAF","Mpumalanga","gas_cons",4,"za-mp"
+"181",2014,"ZAF","North West","gas_cons",12,"za-nw"
+"182",2014,"ZAF","Northern Cape","gas_cons",9,"za-nc"
+"183",2014,"ZAF","Western Cape","gas_cons",44,"za-wc"
+"184",2014,"ZAF","Eastern Cape","totbiom_cons",18,"za-ec"
+"185",2014,"ZAF","Free State","totbiom_cons",46,"za-fs"
+"186",2014,"ZAF","Gauteng","totbiom_cons",24,"za-gt"
+"187",2014,"ZAF","KwaZulu-Natal","totbiom_cons",45,"za-nl"
+"188",2014,"ZAF","Limpopo","totbiom_cons",63,"za-lp"
+"189",2014,"ZAF","Mpumalanga","totbiom_cons",10,"za-mp"
+"190",2014,"ZAF","North West","totbiom_cons",12,"za-nw"
+"191",2014,"ZAF","Northern Cape","totbiom_cons",18,"za-nc"
+"192",2014,"ZAF","Western Cape","totbiom_cons",40,"za-wc"
+"193",2017,"BRA","Acre","elec_cons",3133,"br-ac"
+"194",2017,"BRA","Alagoas","elec_cons",2458,"br-al"
+"195",2017,"BRA","Amapa","elec_cons",3250,"br-ap"
+"196",2017,"BRA","Amazonas","elec_cons",2587,"br-am"
+"197",2017,"BRA","Bahia","elec_cons",2724,"br-ba"
+"198",2017,"BRA","Ceara","elec_cons",2339,"br-ce"
+"199",2017,"BRA","Distrito Federal","elec_cons",2899,"br-df"
+"200",2017,"BRA","Espirito Santo","elec_cons",2767,"br-es"
+"201",2017,"BRA","Goias","elec_cons",3006,"br-go"
+"202",2017,"BRA","Maranhao","elec_cons",2117,"br-ma"
+"203",2017,"BRA","Mato Grosso","elec_cons",3510,"br-mt"
+"204",2017,"BRA","Mato Grosso do Sul","elec_cons",2452,"br-ms"
+"205",2017,"BRA","Minas Gerais","elec_cons",2762,"br-mg"
+"206",2017,"BRA","Para","elec_cons",1718,"br-pa"
+"207",2017,"BRA","Paraiba","elec_cons",2539,"br-pb"
+"208",2017,"BRA","Parana","elec_cons",2823,"br-pr"
+"209",2017,"BRA","Pernambuco","elec_cons",1950,"br-pe"
+"210",2017,"BRA","Piaui","elec_cons",2267,"br-pi"
+"211",2017,"BRA","Rio Grande do Norte","elec_cons",2292,"br-rn"
+"212",2017,"BRA","Rio Grande do Sul","elec_cons",3634,"br-rs"
+"213",2017,"BRA","Rio de Janeiro","elec_cons",3340,"br-rj"
+"214",2017,"BRA","Rondonia","elec_cons",2650,"br-ro"
+"215",2017,"BRA","Roraima","elec_cons",3555,"br-rr"
+"216",2017,"BRA","Santa Catarina","elec_cons",3732,"br-sc"
+"217",2017,"BRA","Sao Paulo","elec_cons",2943,"br-sp"
+"218",2017,"BRA","Sergipe","elec_cons",2356,"br-se"
+"219",2017,"BRA","Tocantins","elec_cons",2468,"br-to"
+"220",2017,"BRA","Acre","gas_cons",1977,"br-ac"
+"221",2017,"BRA","Alagoas","gas_cons",2017,"br-al"
+"222",2017,"BRA","Amapa","gas_cons",2021,"br-ap"
+"223",2017,"BRA","Amazonas","gas_cons",1699,"br-am"
+"224",2017,"BRA","Bahia","gas_cons",1663,"br-ba"
+"225",2017,"BRA","Ceara","gas_cons",1743,"br-ce"
+"226",2017,"BRA","Distrito Federal","gas_cons",1724,"br-df"
+"227",2017,"BRA","Espirito Santo","gas_cons",1898,"br-es"
+"228",2017,"BRA","Goias","gas_cons",1759,"br-go"
+"229",2017,"BRA","Maranhao","gas_cons",1789,"br-ma"
+"230",2017,"BRA","Mato Grosso","gas_cons",2095,"br-mt"
+"231",2017,"BRA","Mato Grosso do Sul","gas_cons",1887,"br-ms"
+"232",2017,"BRA","Minas Gerais","gas_cons",1723,"br-mg"
+"233",2017,"BRA","Para","gas_cons",1803,"br-pa"
+"234",2017,"BRA","Paraiba","gas_cons",1951,"br-pb"
+"235",2017,"BRA","Parana","gas_cons",1593,"br-pr"
+"236",2017,"BRA","Pernambuco","gas_cons",1710,"br-pe"
+"237",2017,"BRA","Piaui","gas_cons",1819,"br-pi"
+"238",2017,"BRA","Rio Grande do Norte","gas_cons",1763,"br-rn"
+"239",2017,"BRA","Rio Grande do Sul","gas_cons",1608,"br-rs"
+"240",2017,"BRA","Rio de Janeiro","gas_cons",1963,"br-rj"
+"241",2017,"BRA","Rondonia","gas_cons",1865,"br-ro"
+"242",2017,"BRA","Roraima","gas_cons",1925,"br-rr"
+"243",2017,"BRA","Santa Catarina","gas_cons",1401,"br-sc"
+"244",2017,"BRA","Sao Paulo","gas_cons",1717,"br-sp"
+"245",2017,"BRA","Sergipe","gas_cons",1941,"br-se"
+"246",2017,"BRA","Tocantins","gas_cons",1929,"br-to"
+"247",2017,"GHA","Ashanti","elec_cons",758,"gh-ah"
+"248",2017,"GHA","Brong Ahafo","elec_cons",439,"gh-ba"
+"249",2017,"GHA","Central","elec_cons",348,"gh-cp"
+"250",2017,"GHA","Eastern","elec_cons",373,"gh-ep"
+"251",2017,"GHA","Greater Accra","elec_cons",836,"gh-aa"
+"252",2017,"GHA","Northern","elec_cons",230,"gh-np"
+"253",2017,"GHA","Upper East","elec_cons",117,"gh-ue"
+"254",2017,"GHA","Upper West","elec_cons",306,"gh-uw"
+"255",2017,"GHA","Volta","elec_cons",396,"gh-tv"
+"256",2017,"GHA","Western","elec_cons",549,"gh-wp"
+"257",2017,"GHA","Ashanti","gas_cons",161,"gh-ah"
+"258",2017,"GHA","Brong Ahafo","gas_cons",14,"gh-ba"
+"259",2017,"GHA","Central","gas_cons",136,"gh-cp"
+"260",2017,"GHA","Eastern","gas_cons",85,"gh-ep"
+"261",2017,"GHA","Greater Accra","gas_cons",352,"gh-aa"
+"262",2017,"GHA","Northern","gas_cons",28,"gh-np"
+"263",2017,"GHA","Upper East","gas_cons",51,"gh-ue"
+"264",2017,"GHA","Upper West","gas_cons",24,"gh-uw"
+"265",2017,"GHA","Volta","gas_cons",102,"gh-tv"
+"266",2017,"GHA","Western","gas_cons",93,"gh-wp"
+"267",2017,"GHA","Ashanti","totbiom_cons",572,"gh-ah"
+"268",2017,"GHA","Brong Ahafo","totbiom_cons",155,"gh-ba"
+"269",2017,"GHA","Central","totbiom_cons",770,"gh-cp"
+"270",2017,"GHA","Eastern","totbiom_cons",735,"gh-ep"
+"271",2017,"GHA","Greater Accra","totbiom_cons",872,"gh-aa"
+"272",2017,"GHA","Northern","totbiom_cons",485,"gh-np"
+"273",2017,"GHA","Upper East","totbiom_cons",314,"gh-ue"
+"274",2017,"GHA","Upper West","totbiom_cons",708,"gh-uw"
+"275",2017,"GHA","Volta","totbiom_cons",1183,"gh-tv"
+"276",2017,"GHA","Western","totbiom_cons",550,"gh-wp"
+"277",2018,"ARM","1","elec_cons",300,NA
+"278",2018,"ARM","10","elec_cons",224,NA
+"279",2018,"ARM","11","elec_cons",175,NA
+"280",2018,"ARM","2","elec_cons",162,NA
+"281",2018,"ARM","3","elec_cons",271,NA
+"282",2018,"ARM","4","elec_cons",250,NA
+"283",2018,"ARM","5","elec_cons",209,NA
+"284",2018,"ARM","6","elec_cons",201,NA
+"285",2018,"ARM","7","elec_cons",253,NA
+"286",2018,"ARM","8","elec_cons",204,NA
+"287",2018,"ARM","9","elec_cons",257,NA
+"288",2018,"ARM","1","gas_cons",26,NA
+"289",2018,"ARM","10","gas_cons",217,NA
+"290",2018,"ARM","11","gas_cons",147,NA
+"291",2018,"ARM","2","gas_cons",108,NA
+"292",2018,"ARM","3","gas_cons",82,NA
+"293",2018,"ARM","4","gas_cons",41,NA
+"294",2018,"ARM","5","gas_cons",137,NA
+"295",2018,"ARM","6","gas_cons",120,NA
+"296",2018,"ARM","7","gas_cons",31,NA
+"297",2018,"ARM","8","gas_cons",190,NA
+"298",2018,"ARM","9","gas_cons",138,NA
+"299",2018,"ARM","1","totbiom_cons",1530,NA
+"300",2018,"ARM","10","totbiom_cons",1627,NA
+"301",2018,"ARM","11","totbiom_cons",6522,NA
+"302",2018,"ARM","2","totbiom_cons",2924,NA
+"303",2018,"ARM","3","totbiom_cons",1307,NA
+"304",2018,"ARM","4","totbiom_cons",682,NA
+"305",2018,"ARM","5","totbiom_cons",6288,NA
+"306",2018,"ARM","6","totbiom_cons",2390,NA
+"307",2018,"ARM","7","totbiom_cons",921,NA
+"308",2018,"ARM","8","totbiom_cons",1926,NA
+"309",2018,"ARM","9","totbiom_cons",4508,NA
+"310",2018,"ETH","Adidis Ababa","elec_cons",2090,"et-2837"
+"311",2018,"ETH","Afar","elec_cons",672,"et-af"
+"312",2018,"ETH","Amhara","elec_cons",653,"et-am"
+"313",2018,"ETH","Benishangule Gumeze","elec_cons",542,"et-be"
+"314",2018,"ETH","Dire Dawa","elec_cons",1704,"et-dd"
+"315",2018,"ETH","Gambella","elec_cons",376,"et-ga"
+"316",2018,"ETH","Harer","elec_cons",1106,"et-ha"
+"317",2018,"ETH","Oromiya","elec_cons",632,"et-aa"
+"318",2018,"ETH","Snnp","elec_cons",416,"et-sn"
+"319",2018,"ETH","Somali","elec_cons",759,"et-so"
+"320",2018,"ETH","Tigray","elec_cons",1048,"et-ti"
+"321",2018,"ETH","Adidis Ababa","gas_cons",60,"et-2837"
+"322",2018,"ETH","Afar","gas_cons",0,"et-af"
+"323",2018,"ETH","Amhara","gas_cons",14,"et-am"
+"324",2018,"ETH","Dire Dawa","gas_cons",0,"et-dd"
+"325",2018,"ETH","Gambella","gas_cons",0,"et-ga"
+"326",2018,"ETH","Oromiya","gas_cons",0,"et-aa"
+"327",2018,"ETH","Snnp","gas_cons",5,"et-sn"
+"328",2018,"ETH","Somali","gas_cons",1,"et-so"
+"329",2018,"ETH","Tigray","gas_cons",0,"et-ti"
+"330",2018,"ETH","Adidis Ababa","totbiom_cons",4,"et-2837"
+"331",2018,"ETH","Afar","totbiom_cons",5,"et-af"
+"332",2018,"ETH","Amhara","totbiom_cons",12,"et-am"
+"333",2018,"ETH","Benishangule Gumeze","totbiom_cons",11,"et-be"
+"334",2018,"ETH","Dire Dawa","totbiom_cons",5,"et-dd"
+"335",2018,"ETH","Gambella","totbiom_cons",11,"et-ga"
+"336",2018,"ETH","Harer","totbiom_cons",8,"et-ha"
+"337",2018,"ETH","Oromiya","totbiom_cons",15,"et-aa"
+"338",2018,"ETH","Snnp","totbiom_cons",10,"et-sn"
+"339",2018,"ETH","Somali","totbiom_cons",5,"et-so"
+"340",2018,"ETH","Tigray","totbiom_cons",8,"et-ti"
+"341",2018,"NGA","Abia","elec_cons",439,NA
+"342",2018,"NGA","Adamawa","elec_cons",149,NA
+"343",2018,"NGA","Akwa Ibom","elec_cons",280,NA
+"344",2018,"NGA","Anambra","elec_cons",233,NA
+"345",2018,"NGA","Bauchi","elec_cons",104,NA
+"346",2018,"NGA","Bayelsa","elec_cons",89,NA
+"347",2018,"NGA","Benue","elec_cons",104,NA
+"348",2018,"NGA","Borno","elec_cons",3,NA
+"349",2018,"NGA","Cross River","elec_cons",106,NA
+"350",2018,"NGA","Delta","elec_cons",315,NA
+"351",2018,"NGA","Ebonyi","elec_cons",129,NA
+"352",2018,"NGA","Edo","elec_cons",494,NA
+"353",2018,"NGA","Ekiti","elec_cons",53,NA
+"354",2018,"NGA","Enugu","elec_cons",277,NA
+"355",2018,"NGA","FCT","elec_cons",828,NA
+"356",2018,"NGA","Gombe","elec_cons",183,NA
+"357",2018,"NGA","Imo","elec_cons",276,NA
+"358",2018,"NGA","Jigawa","elec_cons",87,NA
+"359",2018,"NGA","Kaduna","elec_cons",87,NA
+"360",2018,"NGA","Kano","elec_cons",30,NA
+"361",2018,"NGA","Katsina","elec_cons",435,NA
+"362",2018,"NGA","Kebbi","elec_cons",21,NA
+"363",2018,"NGA","Kogi","elec_cons",77,NA
+"364",2018,"NGA","Kwara","elec_cons",437,NA
+"365",2018,"NGA","Lagos","elec_cons",1316,NA
+"366",2018,"NGA","Nasarawa","elec_cons",65,NA
+"367",2018,"NGA","Niger","elec_cons",142,NA
+"368",2018,"NGA","Ogun","elec_cons",560,NA
+"369",2018,"NGA","Ondo","elec_cons",248,NA
+"370",2018,"NGA","Osun","elec_cons",456,NA
+"371",2018,"NGA","Oyo","elec_cons",416,NA
+"372",2018,"NGA","Plateau","elec_cons",76,NA
+"373",2018,"NGA","Rivers","elec_cons",408,NA
+"374",2018,"NGA","Sokoto","elec_cons",174,NA
+"375",2018,"NGA","Taraba","elec_cons",40,NA
+"376",2018,"NGA","Yobe","elec_cons",124,NA
+"377",2018,"NGA","Zamfara","elec_cons",191,NA
+"378",2018,"NGA","Abia","gas_cons",41,NA
+"379",2018,"NGA","Adamawa","gas_cons",0,NA
+"380",2018,"NGA","Akwa Ibom","gas_cons",61,NA
+"381",2018,"NGA","Anambra","gas_cons",33,NA
+"382",2018,"NGA","Bauchi","gas_cons",21,NA
+"383",2018,"NGA","Bayelsa","gas_cons",139,NA
+"384",2018,"NGA","Benue","gas_cons",8,NA
+"385",2018,"NGA","Borno","gas_cons",4,NA
+"386",2018,"NGA","Cross River","gas_cons",25,NA
+"387",2018,"NGA","Delta","gas_cons",208,NA
+"388",2018,"NGA","Ebonyi","gas_cons",72,NA
+"389",2018,"NGA","Edo","gas_cons",252,NA
+"390",2018,"NGA","Ekiti","gas_cons",194,NA
+"391",2018,"NGA","Enugu","gas_cons",104,NA
+"392",2018,"NGA","FCT","gas_cons",282,NA
+"393",2018,"NGA","Gombe","gas_cons",27,NA
+"394",2018,"NGA","Imo","gas_cons",121,NA
+"395",2018,"NGA","Jigawa","gas_cons",10,NA
+"396",2018,"NGA","Kaduna","gas_cons",69,NA
+"397",2018,"NGA","Kano","gas_cons",20,NA
+"398",2018,"NGA","Katsina","gas_cons",30,NA
+"399",2018,"NGA","Kebbi","gas_cons",2,NA
+"400",2018,"NGA","Kogi","gas_cons",0,NA
+"401",2018,"NGA","Kwara","gas_cons",84,NA
+"402",2018,"NGA","Lagos","gas_cons",397,NA
+"403",2018,"NGA","Nasarawa","gas_cons",62,NA
+"404",2018,"NGA","Niger","gas_cons",7,NA
+"405",2018,"NGA","Ogun","gas_cons",230,NA
+"406",2018,"NGA","Ondo","gas_cons",74,NA
+"407",2018,"NGA","Osun","gas_cons",188,NA
+"408",2018,"NGA","Oyo","gas_cons",147,NA
+"409",2018,"NGA","Plateau","gas_cons",20,NA
+"410",2018,"NGA","Rivers","gas_cons",112,NA
+"411",2018,"NGA","Sokoto","gas_cons",0,NA
+"412",2018,"NGA","Taraba","gas_cons",0,NA
+"413",2018,"NGA","Yobe","gas_cons",0,NA
+"414",2018,"NGA","Zamfara","gas_cons",0,NA
+"415",2018,"NGA","Abia","totbiom_cons",6,NA
+"416",2018,"NGA","Adamawa","totbiom_cons",10,NA
+"417",2018,"NGA","Akwa Ibom","totbiom_cons",14,NA
+"418",2018,"NGA","Anambra","totbiom_cons",11,NA
+"419",2018,"NGA","Bauchi","totbiom_cons",2,NA
+"420",2018,"NGA","Bayelsa","totbiom_cons",5,NA
+"421",2018,"NGA","Benue","totbiom_cons",8,NA
+"422",2018,"NGA","Borno","totbiom_cons",20,NA
+"423",2018,"NGA","Cross River","totbiom_cons",3,NA
+"424",2018,"NGA","Delta","totbiom_cons",3,NA
+"425",2018,"NGA","Ebonyi","totbiom_cons",6,NA
+"426",2018,"NGA","Edo","totbiom_cons",7,NA
+"427",2018,"NGA","Ekiti","totbiom_cons",16,NA
+"428",2018,"NGA","Enugu","totbiom_cons",4,NA
+"429",2018,"NGA","FCT","totbiom_cons",9,NA
+"430",2018,"NGA","Gombe","totbiom_cons",20,NA
+"431",2018,"NGA","Imo","totbiom_cons",1,NA
+"432",2018,"NGA","Jigawa","totbiom_cons",5,NA
+"433",2018,"NGA","Kaduna","totbiom_cons",10,NA
+"434",2018,"NGA","Kano","totbiom_cons",13,NA
+"435",2018,"NGA","Katsina","totbiom_cons",8,NA
+"436",2018,"NGA","Kebbi","totbiom_cons",26,NA
+"437",2018,"NGA","Kogi","totbiom_cons",12,NA
+"438",2018,"NGA","Kwara","totbiom_cons",18,NA
+"439",2018,"NGA","Lagos","totbiom_cons",4,NA
+"440",2018,"NGA","Nasarawa","totbiom_cons",27,NA
+"441",2018,"NGA","Niger","totbiom_cons",15,NA
+"442",2018,"NGA","Ogun","totbiom_cons",8,NA
+"443",2018,"NGA","Ondo","totbiom_cons",16,NA
+"444",2018,"NGA","Osun","totbiom_cons",23,NA
+"445",2018,"NGA","Oyo","totbiom_cons",36,NA
+"446",2018,"NGA","Plateau","totbiom_cons",4,NA
+"447",2018,"NGA","Rivers","totbiom_cons",8,NA
+"448",2018,"NGA","Sokoto","totbiom_cons",21,NA
+"449",2018,"NGA","Taraba","totbiom_cons",22,NA
+"450",2018,"NGA","Yobe","totbiom_cons",19,NA
+"451",2018,"NGA","Zamfara","totbiom_cons",16,NA
+"452",2019,"KHM","Banteay Meanchey","elec_cons",632,"kh-om"
+"453",2019,"KHM","Battambang","elec_cons",403,"kh-ba"
+"454",2019,"KHM","Kampong Cham","elec_cons",490,"kh-km"
+"455",2019,"KHM","Kampong Chhnang","elec_cons",506,"kh-kg"
+"456",2019,"KHM","Kampong Speu","elec_cons",361,"kh-kn"
+"457",2019,"KHM","Kampong Thom","elec_cons",454,"kh-ks"
+"458",2019,"KHM","Kampot","elec_cons",549,"kh-ka"
+"459",2019,"KHM","Kandal","elec_cons",811,"kh-ro"
+"460",2019,"KHM","Kep","elec_cons",501,"kh-kk"
+"461",2019,"KHM","Koh Kong","elec_cons",691,"kh-py"
+"462",2019,"KHM","Kratie","elec_cons",339,"kh-st"
+"463",2019,"KHM","Mondul Kiri","elec_cons",334,"kh-mk"
+"464",2019,"KHM","Oddar Meanchey","elec_cons",331,"kh-om"
+"465",2019,"KHM","Pailin","elec_cons",568,"kh-po"
+"466",2019,"KHM","Phnom Penh","elec_cons",1062,"kh-pp"
+"467",2019,"KHM","Preah Sihanouk","elec_cons",791,"kh-si"
+"468",2019,"KHM","Preah Vihear","elec_cons",234,"kh-pl"
+"469",2019,"KHM","Prey Veng","elec_cons",396,"kh-kt"
+"470",2019,"KHM","Pursat","elec_cons",365,"kh-ph"
+"471",2019,"KHM","Ratanak Kiri","elec_cons",418,"kh-mk"
+"472",2019,"KHM","Siemreap","elec_cons",410,"kh-si"
+"473",2019,"KHM","Stung Treng","elec_cons",409,"kh-st"
+"474",2019,"KHM","Svay Rieng","elec_cons",623,"kh-kp"
+"475",2019,"KHM","Takeo","elec_cons",369,"kh-ta"
+"476",2019,"KHM","Banteay Meanchey","gas_cons",170,"kh-om"
+"477",2019,"KHM","Battambang","gas_cons",186,"kh-ba"
+"478",2019,"KHM","Kampong Cham","gas_cons",207,"kh-km"
+"479",2019,"KHM","Kampong Chhnang","gas_cons",104,"kh-kg"
+"480",2019,"KHM","Kampong Speu","gas_cons",185,"kh-kn"
+"481",2019,"KHM","Kampong Thom","gas_cons",150,"kh-ks"
+"482",2019,"KHM","Kampot","gas_cons",247,"kh-ka"
+"483",2019,"KHM","Kandal","gas_cons",297,"kh-ro"
+"484",2019,"KHM","Kep","gas_cons",386,"kh-kk"
+"485",2019,"KHM","Koh Kong","gas_cons",411,"kh-py"
+"486",2019,"KHM","Kratie","gas_cons",232,"kh-st"
+"487",2019,"KHM","Mondul Kiri","gas_cons",299,"kh-mk"
+"488",2019,"KHM","Oddar Meanchey","gas_cons",83,"kh-om"
+"489",2019,"KHM","Pailin","gas_cons",211,"kh-po"
+"490",2019,"KHM","Phnom Penh","gas_cons",523,"kh-pp"
+"491",2019,"KHM","Preah Sihanouk","gas_cons",457,"kh-si"
+"492",2019,"KHM","Preah Vihear","gas_cons",164,"kh-pl"
+"493",2019,"KHM","Prey Veng","gas_cons",167,"kh-kt"
+"494",2019,"KHM","Pursat","gas_cons",178,"kh-ph"
+"495",2019,"KHM","Ratanak Kiri","gas_cons",164,"kh-mk"
+"496",2019,"KHM","Siemreap","gas_cons",103,"kh-si"
+"497",2019,"KHM","Stung Treng","gas_cons",76,"kh-st"
+"498",2019,"KHM","Svay Rieng","gas_cons",324,"kh-kp"
+"499",2019,"KHM","Takeo","gas_cons",252,"kh-ta"
+"500",2019,"KHM","Banteay Meanchey","totbiom_cons",1372,"kh-om"
+"501",2019,"KHM","Battambang","totbiom_cons",1545,"kh-ba"
+"502",2019,"KHM","Kampong Cham","totbiom_cons",1819,"kh-km"
+"503",2019,"KHM","Kampong Chhnang","totbiom_cons",1991,"kh-kg"
+"504",2019,"KHM","Kampong Speu","totbiom_cons",1043,"kh-kn"
+"505",2019,"KHM","Kampong Thom","totbiom_cons",1443,"kh-ks"
+"506",2019,"KHM","Kampot","totbiom_cons",792,"kh-ka"
+"507",2019,"KHM","Kandal","totbiom_cons",935,"kh-ro"
+"508",2019,"KHM","Kep","totbiom_cons",853,"kh-kk"
+"509",2019,"KHM","Koh Kong","totbiom_cons",802,"kh-py"
+"510",2019,"KHM","Kratie","totbiom_cons",1518,"kh-st"
+"511",2019,"KHM","Mondul Kiri","totbiom_cons",1218,"kh-mk"
+"512",2019,"KHM","Oddar Meanchey","totbiom_cons",1901,"kh-om"
+"513",2019,"KHM","Pailin","totbiom_cons",970,"kh-po"
+"514",2019,"KHM","Phnom Penh","totbiom_cons",291,"kh-pp"
+"515",2019,"KHM","Preah Sihanouk","totbiom_cons",640,"kh-si"
+"516",2019,"KHM","Preah Vihear","totbiom_cons",1758,"kh-pl"
+"517",2019,"KHM","Prey Veng","totbiom_cons",1606,"kh-kt"
+"518",2019,"KHM","Pursat","totbiom_cons",1538,"kh-ph"
+"519",2019,"KHM","Ratanak Kiri","totbiom_cons",1458,"kh-mk"
+"520",2019,"KHM","Siemreap","totbiom_cons",1012,"kh-si"
+"521",2019,"KHM","Stung Treng","totbiom_cons",1325,"kh-st"
+"522",2019,"KHM","Svay Rieng","totbiom_cons",1281,"kh-kp"
+"523",2019,"KHM","Takeo","totbiom_cons",1630,"kh-ta"
+"524",2019,"NPL","Central","elec_cons",917,NA
+"525",2019,"NPL","East","elec_cons",561,NA
+"526",2019,"NPL","Far-Western","elec_cons",407,NA
+"527",2019,"NPL","Mid-Western","elec_cons",174,NA
+"528",2019,"NPL","West","elec_cons",380,NA
+"529",2019,"NPL","Central","gas_cons",1034,NA
+"530",2019,"NPL","East","gas_cons",500,NA
+"531",2019,"NPL","Far-Western","gas_cons",578,NA
+"532",2019,"NPL","Mid-Western","gas_cons",450,NA
+"533",2019,"NPL","West","gas_cons",812,NA
+"534",2019,"NPL","Central","totbiom_cons",3047,NA
+"535",2019,"NPL","East","totbiom_cons",2176,NA
+"536",2019,"NPL","Far-Western","totbiom_cons",1949,NA
+"537",2019,"NPL","Mid-Western","totbiom_cons",3481,NA
+"538",2019,"NPL","West","totbiom_cons",2185,NA
+"539",2019,"UGA","ABIM","elec_cons",21,NA
+"540",2019,"UGA","AGAGO","elec_cons",11,NA
+"541",2019,"UGA","ALEBTONG","elec_cons",7,NA
+"542",2019,"UGA","APAC","elec_cons",13,NA
+"543",2019,"UGA","ARUA","elec_cons",6,NA
+"544",2019,"UGA","BUDUDA","elec_cons",19,NA
+"545",2019,"UGA","BUGIRI","elec_cons",10,NA
+"546",2019,"UGA","BUHWEJU","elec_cons",41,NA
+"547",2019,"UGA","BUIKWE","elec_cons",17,NA
+"548",2019,"UGA","BUKEDEA","elec_cons",10,NA
+"549",2019,"UGA","BUKOMANSIMBI","elec_cons",53,NA
+"550",2019,"UGA","BULAMBULI","elec_cons",33,NA
+"551",2019,"UGA","BUNYANGABU","elec_cons",9,NA
+"552",2019,"UGA","BUSHENYI","elec_cons",65,NA
+"553",2019,"UGA","BUSIA","elec_cons",15,NA
+"554",2019,"UGA","BUTALEJA","elec_cons",36,NA
+"555",2019,"UGA","BUTAMBALA","elec_cons",54,NA
+"556",2019,"UGA","BUVUMA","elec_cons",5,NA
+"557",2019,"UGA","BUYENDE","elec_cons",15,NA
+"558",2019,"UGA","DOKOLO","elec_cons",6,NA
+"559",2019,"UGA","GULU","elec_cons",23,NA
+"560",2019,"UGA","HOIMA","elec_cons",61,NA
+"561",2019,"UGA","IBANDA","elec_cons",30,NA
+"562",2019,"UGA","IGANGA","elec_cons",45,NA
+"563",2019,"UGA","ISINGIRO","elec_cons",23,NA
+"564",2019,"UGA","JINJA","elec_cons",36,NA
+"565",2019,"UGA","KAABONG","elec_cons",5,NA
+"566",2019,"UGA","KABALE","elec_cons",42,NA
+"567",2019,"UGA","KABAROLE","elec_cons",7,NA
+"568",2019,"UGA","KAGADI","elec_cons",6,NA
+"569",2019,"UGA","KAKUMIRO","elec_cons",8,NA
+"570",2019,"UGA","KALIRO","elec_cons",4,NA
+"571",2019,"UGA","KALUNGU","elec_cons",72,NA
+"572",2019,"UGA","KAMPALA","elec_cons",169,NA
+"573",2019,"UGA","KAMULI","elec_cons",32,NA
+"574",2019,"UGA","KAMWENGE","elec_cons",21,NA
+"575",2019,"UGA","KANUNGU","elec_cons",22,NA
+"576",2019,"UGA","KASESE","elec_cons",27,NA
+"577",2019,"UGA","KASSANDA","elec_cons",5,NA
+"578",2019,"UGA","KATAKWI","elec_cons",29,NA
+"579",2019,"UGA","KAYUNGA","elec_cons",24,NA
+"580",2019,"UGA","KIBOGA","elec_cons",18,NA
+"581",2019,"UGA","KIKUUBE","elec_cons",12,NA
+"582",2019,"UGA","KIRUHURA","elec_cons",22,NA
+"583",2019,"UGA","KISORO","elec_cons",35,NA
+"584",2019,"UGA","KITGUM","elec_cons",102,NA
+"585",2019,"UGA","KOBOKO","elec_cons",44,NA
+"586",2019,"UGA","KOLE","elec_cons",25,NA
+"587",2019,"UGA","KOTIDO","elec_cons",6,NA
+"588",2019,"UGA","KUMI","elec_cons",21,NA
+"589",2019,"UGA","KWEEN","elec_cons",13,NA
+"590",2019,"UGA","KYANKWANZI","elec_cons",12,NA
+"591",2019,"UGA","KYEGEGWA","elec_cons",11,NA
+"592",2019,"UGA","KYENJOJO","elec_cons",17,NA
+"593",2019,"UGA","KYOTERA","elec_cons",61,NA
+"594",2019,"UGA","LIRA","elec_cons",13,NA
+"595",2019,"UGA","LUUKA","elec_cons",12,NA
+"596",2019,"UGA","LUWERO","elec_cons",95,NA
+"597",2019,"UGA","LWENGO","elec_cons",28,NA
+"598",2019,"UGA","MANAFWA","elec_cons",18,NA
+"599",2019,"UGA","MASAKA","elec_cons",11,NA
+"600",2019,"UGA","MASINDI","elec_cons",53,NA
+"601",2019,"UGA","MAYUGE","elec_cons",21,NA
+"602",2019,"UGA","MBALE","elec_cons",103,NA
+"603",2019,"UGA","MBARARA","elec_cons",88,NA
+"604",2019,"UGA","MITOOMA","elec_cons",40,NA
+"605",2019,"UGA","MITYANA","elec_cons",43,NA
+"606",2019,"UGA","MOROTO","elec_cons",13,NA
+"607",2019,"UGA","MOYO","elec_cons",19,NA
+"608",2019,"UGA","MPIGI","elec_cons",101,NA
+"609",2019,"UGA","MUBENDE","elec_cons",41,NA
+"610",2019,"UGA","MUKONO","elec_cons",23,NA
+"611",2019,"UGA","NAKAPIRIPIRIT","elec_cons",5,NA
+"612",2019,"UGA","NAKASEKE","elec_cons",102,NA
+"613",2019,"UGA","NAMAYINGO","elec_cons",15,NA
+"614",2019,"UGA","NAMISINDWA","elec_cons",8,NA
+"615",2019,"UGA","NAMUTUMBA","elec_cons",16,NA
+"616",2019,"UGA","NEBBI","elec_cons",26,NA
+"617",2019,"UGA","NTOROKO","elec_cons",7,NA
+"618",2019,"UGA","NTUNGAMO","elec_cons",46,NA
+"619",2019,"UGA","OTUKE","elec_cons",35,NA
+"620",2019,"UGA","OYAM","elec_cons",1,NA
+"621",2019,"UGA","PADER","elec_cons",17,NA
+"622",2019,"UGA","PAKWACH","elec_cons",3,NA
+"623",2019,"UGA","PALLISA","elec_cons",2,NA
+"624",2019,"UGA","RAKAI","elec_cons",18,NA
+"625",2019,"UGA","RUBANDA","elec_cons",10,NA
+"626",2019,"UGA","RUKIGA","elec_cons",42,NA
+"627",2019,"UGA","RUKUNGIRI","elec_cons",25,NA
+"628",2019,"UGA","SHEEMA","elec_cons",78,NA
+"629",2019,"UGA","SIRONKO","elec_cons",2,NA
+"630",2019,"UGA","SOROTI","elec_cons",0,NA
+"631",2019,"UGA","SSEMBABULE","elec_cons",18,NA
+"632",2019,"UGA","TORORO","elec_cons",11,NA
+"633",2019,"UGA","WAKISO","elec_cons",140,NA
+"634",2019,"UGA","YUMBE","elec_cons",14,NA
+"635",2019,"UGA","ZOMBO","elec_cons",20,NA
+"636",2019,"UGA","BUIKWE","gas_cons",49,NA
+"637",2019,"UGA","HOIMA","gas_cons",43,NA
+"638",2019,"UGA","IBANDA","gas_cons",13,NA
+"639",2019,"UGA","KABALE","gas_cons",103,NA
+"640",2019,"UGA","KAMPALA","gas_cons",100,NA
+"641",2019,"UGA","MITYANA","gas_cons",31,NA
+"642",2019,"UGA","MPIGI","gas_cons",37,NA
+"643",2019,"UGA","ABIM","totbiom_cons",1634,NA
+"644",2019,"UGA","AGAGO","totbiom_cons",1600,NA
+"645",2019,"UGA","ALEBTONG","totbiom_cons",2193,NA
+"646",2019,"UGA","AMOLATAR","totbiom_cons",951,NA
+"647",2019,"UGA","AMUDAT","totbiom_cons",1414,NA
+"648",2019,"UGA","AMURU","totbiom_cons",1207,NA
+"649",2019,"UGA","APAC","totbiom_cons",1881,NA
+"650",2019,"UGA","ARUA","totbiom_cons",2709,NA
+"651",2019,"UGA","BUDUDA","totbiom_cons",1987,NA
+"652",2019,"UGA","BUGIRI","totbiom_cons",692,NA
+"653",2019,"UGA","BUHWEJU","totbiom_cons",1206,NA
+"654",2019,"UGA","BUIKWE","totbiom_cons",1167,NA
+"655",2019,"UGA","BUKEDEA","totbiom_cons",642,NA
+"656",2019,"UGA","BUKOMANSIMBI","totbiom_cons",1621,NA
+"657",2019,"UGA","BULAMBULI","totbiom_cons",1759,NA
+"658",2019,"UGA","BUNYANGABU","totbiom_cons",613,NA
+"659",2019,"UGA","BUSHENYI","totbiom_cons",1377,NA
+"660",2019,"UGA","BUSIA","totbiom_cons",1820,NA
+"661",2019,"UGA","BUTALEJA","totbiom_cons",885,NA
+"662",2019,"UGA","BUTAMBALA","totbiom_cons",3026,NA
+"663",2019,"UGA","BUVUMA","totbiom_cons",1334,NA
+"664",2019,"UGA","BUYENDE","totbiom_cons",1037,NA
+"665",2019,"UGA","DOKOLO","totbiom_cons",1687,NA
+"666",2019,"UGA","GULU","totbiom_cons",1803,NA
+"667",2019,"UGA","HOIMA","totbiom_cons",1809,NA
+"668",2019,"UGA","IBANDA","totbiom_cons",1674,NA
+"669",2019,"UGA","IGANGA","totbiom_cons",1504,NA
+"670",2019,"UGA","ISINGIRO","totbiom_cons",949,NA
+"671",2019,"UGA","JINJA","totbiom_cons",796,NA
+"672",2019,"UGA","KAABONG","totbiom_cons",638,NA
+"673",2019,"UGA","KABALE","totbiom_cons",1684,NA
+"674",2019,"UGA","KABAROLE","totbiom_cons",1182,NA
+"675",2019,"UGA","KAGADI","totbiom_cons",1385,NA
+"676",2019,"UGA","KAKUMIRO","totbiom_cons",126,NA
+"677",2019,"UGA","KALANGALA","totbiom_cons",2027,NA
+"678",2019,"UGA","KALIRO","totbiom_cons",1278,NA
+"679",2019,"UGA","KALUNGU","totbiom_cons",1996,NA
+"680",2019,"UGA","KAMPALA","totbiom_cons",2795,NA
+"681",2019,"UGA","KAMULI","totbiom_cons",393,NA
+"682",2019,"UGA","KAMWENGE","totbiom_cons",390,NA
+"683",2019,"UGA","KANUNGU","totbiom_cons",779,NA
+"684",2019,"UGA","KAPELEBYONG","totbiom_cons",1058,NA
+"685",2019,"UGA","KASESE","totbiom_cons",287,NA
+"686",2019,"UGA","KASSANDA","totbiom_cons",3100,NA
+"687",2019,"UGA","KATAKWI","totbiom_cons",779,NA
+"688",2019,"UGA","KAYUNGA","totbiom_cons",2767,NA
+"689",2019,"UGA","KIBAALE","totbiom_cons",450,NA
+"690",2019,"UGA","KIBOGA","totbiom_cons",921,NA
+"691",2019,"UGA","KIKUUBE","totbiom_cons",963,NA
+"692",2019,"UGA","KIRUHURA","totbiom_cons",1277,NA
+"693",2019,"UGA","KIRYANDONGO","totbiom_cons",797,NA
+"694",2019,"UGA","KISORO","totbiom_cons",1141,NA
+"695",2019,"UGA","KITGUM","totbiom_cons",1408,NA
+"696",2019,"UGA","KOBOKO","totbiom_cons",1841,NA
+"697",2019,"UGA","KOLE","totbiom_cons",1388,NA
+"698",2019,"UGA","KOTIDO","totbiom_cons",667,NA
+"699",2019,"UGA","KUMI","totbiom_cons",1187,NA
+"700",2019,"UGA","KWANIA","totbiom_cons",1930,NA
+"701",2019,"UGA","KWEEN","totbiom_cons",1935,NA
+"702",2019,"UGA","KYANKWANZI","totbiom_cons",2250,NA
+"703",2019,"UGA","KYEGEGWA","totbiom_cons",1460,NA
+"704",2019,"UGA","KYENJOJO","totbiom_cons",1377,NA
+"705",2019,"UGA","KYOTERA","totbiom_cons",1693,NA
+"706",2019,"UGA","LIRA","totbiom_cons",895,NA
+"707",2019,"UGA","LUUKA","totbiom_cons",444,NA
+"708",2019,"UGA","LUWERO","totbiom_cons",2241,NA
+"709",2019,"UGA","LWENGO","totbiom_cons",2115,NA
+"710",2019,"UGA","LYANTONDE","totbiom_cons",1075,NA
+"711",2019,"UGA","MANAFWA","totbiom_cons",3121,NA
+"712",2019,"UGA","MARACHA","totbiom_cons",1366,NA
+"713",2019,"UGA","MASAKA","totbiom_cons",1257,NA
+"714",2019,"UGA","MASINDI","totbiom_cons",746,NA
+"715",2019,"UGA","MAYUGE","totbiom_cons",2022,NA
+"716",2019,"UGA","MBALE","totbiom_cons",1752,NA
+"717",2019,"UGA","MBARARA","totbiom_cons",1049,NA
+"718",2019,"UGA","MITOOMA","totbiom_cons",2483,NA
+"719",2019,"UGA","MITYANA","totbiom_cons",1116,NA
+"720",2019,"UGA","MOROTO","totbiom_cons",177,NA
+"721",2019,"UGA","MOYO","totbiom_cons",1037,NA
+"722",2019,"UGA","MPIGI","totbiom_cons",3273,NA
+"723",2019,"UGA","MUBENDE","totbiom_cons",667,NA
+"724",2019,"UGA","MUKONO","totbiom_cons",1740,NA
+"725",2019,"UGA","NABILATUK","totbiom_cons",98,NA
+"726",2019,"UGA","NAKAPIRIPIRIT","totbiom_cons",1360,NA
+"727",2019,"UGA","NAKASEKE","totbiom_cons",1687,NA
+"728",2019,"UGA","NAMAYINGO","totbiom_cons",1075,NA
+"729",2019,"UGA","NAMISINDWA","totbiom_cons",1611,NA
+"730",2019,"UGA","NAMUTUMBA","totbiom_cons",729,NA
+"731",2019,"UGA","NAPAK","totbiom_cons",2191,NA
+"732",2019,"UGA","NEBBI","totbiom_cons",2521,NA
+"733",2019,"UGA","NTOROKO","totbiom_cons",3057,NA
+"734",2019,"UGA","NTUNGAMO","totbiom_cons",2060,NA
+"735",2019,"UGA","OMORO","totbiom_cons",897,NA
+"736",2019,"UGA","OTUKE","totbiom_cons",1009,NA
+"737",2019,"UGA","OYAM","totbiom_cons",1823,NA
+"738",2019,"UGA","PADER","totbiom_cons",512,NA
+"739",2019,"UGA","PAKWACH","totbiom_cons",2410,NA
+"740",2019,"UGA","PALLISA","totbiom_cons",3372,NA
+"741",2019,"UGA","RAKAI","totbiom_cons",1630,NA
+"742",2019,"UGA","RUBANDA","totbiom_cons",1596,NA
+"743",2019,"UGA","RUKIGA","totbiom_cons",1821,NA
+"744",2019,"UGA","RUKUNGIRI","totbiom_cons",1290,NA
+"745",2019,"UGA","SERERE","totbiom_cons",3012,NA
+"746",2019,"UGA","SHEEMA","totbiom_cons",1000,NA
+"747",2019,"UGA","SIRONKO","totbiom_cons",2208,NA
+"748",2019,"UGA","SOROTI","totbiom_cons",1204,NA
+"749",2019,"UGA","SSEMBABULE","totbiom_cons",1680,NA
+"750",2019,"UGA","TORORO","totbiom_cons",1886,NA
+"751",2019,"UGA","WAKISO","totbiom_cons",1425,NA
+"752",2019,"UGA","YUMBE","totbiom_cons",1343,NA
+"753",2019,"UGA","ZOMBO","totbiom_cons",664,NA
+"754",2020,"MEX","Ags.","elec_cons",1394,"mx-ag"
+"755",2020,"MEX","BC","elec_cons",2920,"mx-bc"
+"756",2020,"MEX","BCS","elec_cons",2499,"mx-bs"
+"757",2020,"MEX","CDMX","elec_cons",1495,"mx-df"
+"758",2020,"MEX","Camp.","elec_cons",1700,"mx-cm"
+"759",2020,"MEX","Chih.","elec_cons",2415,"mx-ch"
+"760",2020,"MEX","Chis.","elec_cons",1490,"mx-cs"
+"761",2020,"MEX","Coah.","elec_cons",2325,"mx-co"
+"762",2020,"MEX","Col.","elec_cons",2361,"mx-cl"
+"763",2020,"MEX","Dgo.","elec_cons",1351,"mx-dg"
+"764",2020,"MEX","Gro.","elec_cons",1772,"mx-gr"
+"765",2020,"MEX","Gto.","elec_cons",1272,"mx-gj"
+"766",2020,"MEX","Hgo.","elec_cons",1262,"mx-hg"
+"767",2020,"MEX","Jal.","elec_cons",1215,"mx-ja"
+"768",2020,"MEX","Mex.","elec_cons",1601,"mx-mx"
+"769",2020,"MEX","Mich.","elec_cons",2017,"mx-mi"
+"770",2020,"MEX","Mor.","elec_cons",1371,"mx-mo"
+"771",2020,"MEX","NL","elec_cons",1952,"mx-nl"
+"772",2020,"MEX","Nay.","elec_cons",1742,"mx-na"
+"773",2020,"MEX","Oax.","elec_cons",1509,"mx-oa"
+"774",2020,"MEX","Pue.","elec_cons",1117,"mx-pu"
+"775",2020,"MEX","Q. Roo","elec_cons",1633,"mx-qr"
+"776",2020,"MEX","Qro.","elec_cons",1986,"mx-qt"
+"777",2020,"MEX","SLP","elec_cons",1252,"mx-sl"
+"778",2020,"MEX","Sin.","elec_cons",3657,"mx-si"
+"779",2020,"MEX","Son.","elec_cons",3869,"mx-so"
+"780",2020,"MEX","Tab.","elec_cons",1292,"mx-tb"
+"781",2020,"MEX","Tamps.","elec_cons",2590,"mx-tm"
+"782",2020,"MEX","Tlax.","elec_cons",1180,"mx-tl"
+"783",2020,"MEX","Ver.","elec_cons",1074,"mx-ve"
+"784",2020,"MEX","Yuc.","elec_cons",1802,"mx-yu"
+"785",2020,"MEX","Zac.","elec_cons",1034,"mx-za"
+"786",2020,"MEX","Ags.","gas_cons",1860,"mx-ag"
+"787",2020,"MEX","BC","gas_cons",2370,"mx-bc"
+"788",2020,"MEX","BCS","gas_cons",1399,"mx-bs"
+"789",2020,"MEX","CDMX","gas_cons",2390,"mx-df"
+"790",2020,"MEX","Camp.","gas_cons",1444,"mx-cm"
+"791",2020,"MEX","Chih.","gas_cons",2052,"mx-ch"
+"792",2020,"MEX","Chis.","gas_cons",1355,"mx-cs"
+"793",2020,"MEX","Coah.","gas_cons",2000,"mx-co"
+"794",2020,"MEX","Col.","gas_cons",1529,"mx-cl"
+"795",2020,"MEX","Dgo.","gas_cons",1917,"mx-dg"
+"796",2020,"MEX","Gro.","gas_cons",1602,"mx-gr"
+"797",2020,"MEX","Gto.","gas_cons",1758,"mx-gj"
+"798",2020,"MEX","Hgo.","gas_cons",2008,"mx-hg"
+"799",2020,"MEX","Jal.","gas_cons",1759,"mx-ja"
+"800",2020,"MEX","Mex.","gas_cons",1829,"mx-mx"
+"801",2020,"MEX","Mich.","gas_cons",1615,"mx-mi"
+"802",2020,"MEX","Mor.","gas_cons",1758,"mx-mo"
+"803",2020,"MEX","NL","gas_cons",925,"mx-nl"
+"804",2020,"MEX","Nay.","gas_cons",1685,"mx-na"
+"805",2020,"MEX","Oax.","gas_cons",1282,"mx-oa"
+"806",2020,"MEX","Pue.","gas_cons",1694,"mx-pu"
+"807",2020,"MEX","Q. Roo","gas_cons",1013,"mx-qr"
+"808",2020,"MEX","Qro.","gas_cons",1806,"mx-qt"
+"809",2020,"MEX","SLP","gas_cons",1610,"mx-sl"
+"810",2020,"MEX","Sin.","gas_cons",1869,"mx-si"
+"811",2020,"MEX","Son.","gas_cons",1797,"mx-so"
+"812",2020,"MEX","Tab.","gas_cons",1065,"mx-tb"
+"813",2020,"MEX","Tamps.","gas_cons",1575,"mx-tm"
+"814",2020,"MEX","Tlax.","gas_cons",2169,"mx-tl"
+"815",2020,"MEX","Ver.","gas_cons",1437,"mx-ve"
+"816",2020,"MEX","Yuc.","gas_cons",984,"mx-yu"
+"817",2020,"MEX","Zac.","gas_cons",2055,"mx-za"
+"818",2020,"MEX","Ags.","totbiom_cons",1017,"mx-ag"
+"819",2020,"MEX","BC","totbiom_cons",694,"mx-bc"
+"820",2020,"MEX","BCS","totbiom_cons",1420,"mx-bs"
+"821",2020,"MEX","CDMX","totbiom_cons",1726,"mx-df"
+"822",2020,"MEX","Camp.","totbiom_cons",1932,"mx-cm"
+"823",2020,"MEX","Chih.","totbiom_cons",2337,"mx-ch"
+"824",2020,"MEX","Chis.","totbiom_cons",5842,"mx-cs"
+"825",2020,"MEX","Coah.","totbiom_cons",1235,"mx-co"
+"826",2020,"MEX","Col.","totbiom_cons",1535,"mx-cl"
+"827",2020,"MEX","Dgo.","totbiom_cons",2293,"mx-dg"
+"828",2020,"MEX","Gro.","totbiom_cons",4525,"mx-gr"
+"829",2020,"MEX","Gto.","totbiom_cons",361,"mx-gj"
+"830",2020,"MEX","Hgo.","totbiom_cons",266,"mx-hg"
+"831",2020,"MEX","Jal.","totbiom_cons",346,"mx-ja"
+"832",2020,"MEX","Mex.","totbiom_cons",3146,"mx-mx"
+"833",2020,"MEX","Mich.","totbiom_cons",1344,"mx-mi"
+"834",2020,"MEX","Mor.","totbiom_cons",545,"mx-mo"
+"835",2020,"MEX","NL","totbiom_cons",318,"mx-nl"
+"836",2020,"MEX","Nay.","totbiom_cons",353,"mx-na"
+"837",2020,"MEX","Oax.","totbiom_cons",5596,"mx-oa"
+"838",2020,"MEX","Pue.","totbiom_cons",3153,"mx-pu"
+"839",2020,"MEX","Q. Roo","totbiom_cons",2117,"mx-qr"
+"840",2020,"MEX","Qro.","totbiom_cons",2284,"mx-qt"
+"841",2020,"MEX","SLP","totbiom_cons",1478,"mx-sl"
+"842",2020,"MEX","Sin.","totbiom_cons",1544,"mx-si"
+"843",2020,"MEX","Son.","totbiom_cons",600,"mx-so"
+"844",2020,"MEX","Tab.","totbiom_cons",2695,"mx-tb"
+"845",2020,"MEX","Tamps.","totbiom_cons",274,"mx-tm"
+"846",2020,"MEX","Tlax.","totbiom_cons",2779,"mx-tl"
+"847",2020,"MEX","Ver.","totbiom_cons",6057,"mx-ve"
+"848",2020,"MEX","Yuc.","totbiom_cons",1311,"mx-yu"
+"849",2020,"MEX","Zac.","totbiom_cons",1268,"mx-za"
+"850",2020,"RUS","1","elec_cons",862,NA
+"851",2020,"RUS","10","elec_cons",915,NA
+"852",2020,"RUS","11","elec_cons",929,NA
+"853",2020,"RUS","12","elec_cons",867,NA
+"854",2020,"RUS","14","elec_cons",925,NA
+"855",2020,"RUS","15","elec_cons",896,NA
+"856",2020,"RUS","17","elec_cons",864,NA
+"857",2020,"RUS","18","elec_cons",821,NA
+"858",2020,"RUS","19","elec_cons",935,NA
+"859",2020,"RUS","20","elec_cons",904,NA
+"860",2020,"RUS","22","elec_cons",842,NA
+"861",2020,"RUS","24","elec_cons",796,NA
+"862",2020,"RUS","25","elec_cons",687,NA
+"863",2020,"RUS","26","elec_cons",759,NA
+"864",2020,"RUS","27","elec_cons",949,NA
+"865",2020,"RUS","28","elec_cons",913,NA
+"866",2020,"RUS","29","elec_cons",1020,NA
+"867",2020,"RUS","3","elec_cons",889,NA
+"868",2020,"RUS","30","elec_cons",1244,NA
+"869",2020,"RUS","32","elec_cons",720,NA
+"870",2020,"RUS","33","elec_cons",777,NA
+"871",2020,"RUS","34","elec_cons",887,NA
+"872",2020,"RUS","35","elec_cons",985,NA
+"873",2020,"RUS","36","elec_cons",766,NA
+"874",2020,"RUS","37","elec_cons",718,NA
+"875",2020,"RUS","38","elec_cons",932,NA
+"876",2020,"RUS","4","elec_cons",679,NA
+"877",2020,"RUS","40","elec_cons",983,NA
+"878",2020,"RUS","41","elec_cons",856,NA
+"879",2020,"RUS","42","elec_cons",775,NA
+"880",2020,"RUS","44","elec_cons",1268,NA
+"881",2020,"RUS","45","elec_cons",1115,NA
+"882",2020,"RUS","46","elec_cons",1073,NA
+"883",2020,"RUS","47","elec_cons",739,NA
+"884",2020,"RUS","49","elec_cons",949,NA
+"885",2020,"RUS","5","elec_cons",1228,NA
+"886",2020,"RUS","50","elec_cons",866,NA
+"887",2020,"RUS","52","elec_cons",885,NA
+"888",2020,"RUS","53","elec_cons",660,NA
+"889",2020,"RUS","54","elec_cons",894,NA
+"890",2020,"RUS","56","elec_cons",724,NA
+"891",2020,"RUS","57","elec_cons",870,NA
+"892",2020,"RUS","58","elec_cons",976,NA
+"893",2020,"RUS","60","elec_cons",976,NA
+"894",2020,"RUS","61","elec_cons",1070,NA
+"895",2020,"RUS","63","elec_cons",797,NA
+"896",2020,"RUS","64","elec_cons",1331,NA
+"897",2020,"RUS","65","elec_cons",869,NA
+"898",2020,"RUS","66","elec_cons",862,NA
+"899",2020,"RUS","67","elec_cons",944,NA
+"900",2020,"RUS","68","elec_cons",929,NA
+"901",2020,"RUS","69","elec_cons",934,NA
+"902",2020,"RUS","7","elec_cons",929,NA
+"903",2020,"RUS","70","elec_cons",936,NA
+"904",2020,"RUS","71","elec_cons",731,NA
+"905",2020,"RUS","73","elec_cons",827,NA
+"906",2020,"RUS","75","elec_cons",793,NA
+"907",2020,"RUS","76","elec_cons",872,NA
+"908",2020,"RUS","77","elec_cons",1318,NA
+"909",2020,"RUS","78","elec_cons",766,NA
+"910",2020,"RUS","79","elec_cons",883,NA
+"911",2020,"RUS","8","elec_cons",921,NA
+"912",2020,"RUS","81","elec_cons",856,NA
+"913",2020,"RUS","82","elec_cons",688,NA
+"914",2020,"RUS","83","elec_cons",784,NA
+"915",2020,"RUS","84","elec_cons",918,NA
+"916",2020,"RUS","85","elec_cons",829,NA
+"917",2020,"RUS","86","elec_cons",924,NA
+"918",2020,"RUS","87","elec_cons",945,NA
+"919",2020,"RUS","88","elec_cons",823,NA
+"920",2020,"RUS","89","elec_cons",761,NA
+"921",2020,"RUS","90","elec_cons",765,NA
+"922",2020,"RUS","91","elec_cons",781,NA
+"923",2020,"RUS","92","elec_cons",757,NA
+"924",2020,"RUS","93","elec_cons",764,NA
+"925",2020,"RUS","94","elec_cons",730,NA
+"926",2020,"RUS","95","elec_cons",618,NA
+"927",2020,"RUS","96","elec_cons",700,NA
+"928",2020,"RUS","97","elec_cons",774,NA
+"929",2020,"RUS","98","elec_cons",1047,NA
+"930",2020,"RUS","99","elec_cons",1016,NA
+"931",2020,"RUS","1","gas_cons",623,NA
+"932",2020,"RUS","10","gas_cons",373,NA
+"933",2020,"RUS","11","gas_cons",410,NA
+"934",2020,"RUS","12","gas_cons",497,NA
+"935",2020,"RUS","14","gas_cons",570,NA
+"936",2020,"RUS","15","gas_cons",903,NA
+"937",2020,"RUS","17","gas_cons",778,NA
+"938",2020,"RUS","18","gas_cons",543,NA
+"939",2020,"RUS","19","gas_cons",452,NA
+"940",2020,"RUS","20","gas_cons",734,NA
+"941",2020,"RUS","22","gas_cons",605,NA
+"942",2020,"RUS","24","gas_cons",606,NA
+"943",2020,"RUS","25","gas_cons",373,NA
+"944",2020,"RUS","26","gas_cons",393,NA
+"945",2020,"RUS","27","gas_cons",441,NA
+"946",2020,"RUS","28","gas_cons",616,NA
+"947",2020,"RUS","29","gas_cons",847,NA
+"948",2020,"RUS","3","gas_cons",666,NA
+"949",2020,"RUS","30","gas_cons",88,NA
+"950",2020,"RUS","32","gas_cons",36,NA
+"951",2020,"RUS","33","gas_cons",307,NA
+"952",2020,"RUS","34","gas_cons",429,NA
+"953",2020,"RUS","35","gas_cons",755,NA
+"954",2020,"RUS","36","gas_cons",505,NA
+"955",2020,"RUS","37","gas_cons",539,NA
+"956",2020,"RUS","38","gas_cons",706,NA
+"957",2020,"RUS","4","gas_cons",281,NA
+"958",2020,"RUS","40","gas_cons",295,NA
+"959",2020,"RUS","41","gas_cons",299,NA
+"960",2020,"RUS","42","gas_cons",608,NA
+"961",2020,"RUS","44","gas_cons",39,NA
+"962",2020,"RUS","45","gas_cons",157,NA
+"963",2020,"RUS","46","gas_cons",401,NA
+"964",2020,"RUS","47","gas_cons",237,NA
+"965",2020,"RUS","49","gas_cons",635,NA
+"966",2020,"RUS","5","gas_cons",122,NA
+"967",2020,"RUS","50","gas_cons",232,NA
+"968",2020,"RUS","52","gas_cons",468,NA
+"969",2020,"RUS","53","gas_cons",617,NA
+"970",2020,"RUS","54","gas_cons",559,NA
+"971",2020,"RUS","56","gas_cons",573,NA
+"972",2020,"RUS","57","gas_cons",518,NA
+"973",2020,"RUS","58","gas_cons",582,NA
+"974",2020,"RUS","60","gas_cons",529,NA
+"975",2020,"RUS","61","gas_cons",943,NA
+"976",2020,"RUS","63","gas_cons",562,NA
+"977",2020,"RUS","64","gas_cons",194,NA
+"978",2020,"RUS","65","gas_cons",316,NA
+"979",2020,"RUS","66","gas_cons",543,NA
+"980",2020,"RUS","67","gas_cons",213,NA
+"981",2020,"RUS","68","gas_cons",523,NA
+"982",2020,"RUS","69","gas_cons",367,NA
+"983",2020,"RUS","7","gas_cons",721,NA
+"984",2020,"RUS","70","gas_cons",615,NA
+"985",2020,"RUS","71","gas_cons",211,NA
+"986",2020,"RUS","73","gas_cons",566,NA
+"987",2020,"RUS","75","gas_cons",267,NA
+"988",2020,"RUS","76","gas_cons",362,NA
+"989",2020,"RUS","77","gas_cons",178,NA
+"990",2020,"RUS","78","gas_cons",559,NA
+"991",2020,"RUS","79","gas_cons",600,NA
+"992",2020,"RUS","8","gas_cons",202,NA
+"993",2020,"RUS","81","gas_cons",412,NA
+"994",2020,"RUS","82","gas_cons",510,NA
+"995",2020,"RUS","83","gas_cons",643,NA
+"996",2020,"RUS","84","gas_cons",916,NA
+"997",2020,"RUS","85","gas_cons",865,NA
+"998",2020,"RUS","86","gas_cons",289,NA
+"999",2020,"RUS","87","gas_cons",380,NA
+"1000",2020,"RUS","88","gas_cons",410,NA
+"1001",2020,"RUS","89","gas_cons",582,NA
+"1002",2020,"RUS","90","gas_cons",453,NA
+"1003",2020,"RUS","91","gas_cons",591,NA
+"1004",2020,"RUS","92","gas_cons",524,NA
+"1005",2020,"RUS","93","gas_cons",642,NA
+"1006",2020,"RUS","94","gas_cons",509,NA
+"1007",2020,"RUS","95","gas_cons",250,NA
+"1008",2020,"RUS","96","gas_cons",549,NA
+"1009",2020,"RUS","97","gas_cons",467,NA
+"1010",2020,"RUS","98","gas_cons",285,NA
+"1011",2020,"RUS","99","gas_cons",493,NA
+"1012",2020,"VNM","An Giang","elec_cons",1620,NA
+"1013",2020,"VNM","Ba Ria - Vung Tau","elec_cons",2382,NA
+"1014",2020,"VNM","Bac Giang","elec_cons",2730,NA
+"1015",2020,"VNM","Bac Kan","elec_cons",1977,NA
+"1016",2020,"VNM","Bac Lieu","elec_cons",2731,NA
+"1017",2020,"VNM","Bac Ninh","elec_cons",3015,NA
+"1018",2020,"VNM","Ben Tre","elec_cons",1658,NA
+"1019",2020,"VNM","Binh Dinh","elec_cons",2585,NA
+"1020",2020,"VNM","Binh Duong","elec_cons",2046,NA
+"1021",2020,"VNM","Binh Phuoc","elec_cons",2333,NA
+"1022",2020,"VNM","Binh Thuan","elec_cons",2209,NA
+"1023",2020,"VNM","Ca Mau","elec_cons",2457,NA
+"1024",2020,"VNM","Can Tho","elec_cons",2566,NA
+"1025",2020,"VNM","Cao Bang","elec_cons",1821,NA
+"1026",2020,"VNM","Da Nang","elec_cons",2998,NA
+"1027",2020,"VNM","Dac Lak","elec_cons",2083,NA
+"1028",2020,"VNM","Dak Nong","elec_cons",1916,NA
+"1029",2020,"VNM","Dien Bien","elec_cons",1743,NA
+"1030",2020,"VNM","Dong Nai","elec_cons",2504,NA
+"1031",2020,"VNM","Dong Thap","elec_cons",2071,NA
+"1032",2020,"VNM","Gia Lai","elec_cons",1911,NA
+"1033",2020,"VNM","Ha Giang","elec_cons",1521,NA
+"1034",2020,"VNM","Ha Nam","elec_cons",2697,NA
+"1035",2020,"VNM","Ha Noi","elec_cons",3552,NA
+"1036",2020,"VNM","Ha Tinh","elec_cons",2559,NA
+"1037",2020,"VNM","Hai Duong","elec_cons",2838,NA
+"1038",2020,"VNM","Hai Phong","elec_cons",3177,NA
+"1039",2020,"VNM","Hau Giang","elec_cons",2471,NA
+"1040",2020,"VNM","Ho Chi Minh","elec_cons",3577,NA
+"1041",2020,"VNM","Hoa Binh","elec_cons",2004,NA
+"1042",2020,"VNM","Hung Yen","elec_cons",3179,NA
+"1043",2020,"VNM","Khanh Hoa","elec_cons",2528,NA
+"1044",2020,"VNM","Kien Giang","elec_cons",2091,NA
+"1045",2020,"VNM","Kon Tum","elec_cons",1216,NA
+"1046",2020,"VNM","Lai Chau","elec_cons",1559,NA
+"1047",2020,"VNM","Lam Dong","elec_cons",1761,NA
+"1048",2020,"VNM","Lang Son","elec_cons",2094,NA
+"1049",2020,"VNM","Lao Cai","elec_cons",2124,NA
+"1050",2020,"VNM","Long An","elec_cons",2463,NA
+"1051",2020,"VNM","Nam Dinh","elec_cons",2674,NA
+"1052",2020,"VNM","Nghe An","elec_cons",2594,NA
+"1053",2020,"VNM","Ninh Binh","elec_cons",3212,NA
+"1054",2020,"VNM","Ninh Thuan","elec_cons",2092,NA
+"1055",2020,"VNM","Phu Tho","elec_cons",3184,NA
+"1056",2020,"VNM","Phu Yen","elec_cons",1807,NA
+"1057",2020,"VNM","Quang Binh","elec_cons",2235,NA
+"1058",2020,"VNM","Quang Nam","elec_cons",1487,NA
+"1059",2020,"VNM","Quang Ngai","elec_cons",1916,NA
+"1060",2020,"VNM","Quang Ninh","elec_cons",2719,NA
+"1061",2020,"VNM","Quang Tri","elec_cons",2242,NA
+"1062",2020,"VNM","Soc Trang","elec_cons",2259,NA
+"1063",2020,"VNM","Son La","elec_cons",1201,NA
+"1064",2020,"VNM","Tay Ninh","elec_cons",2453,NA
+"1065",2020,"VNM","Thai Binh","elec_cons",3045,NA
+"1066",2020,"VNM","Thai Nguyen","elec_cons",2463,NA
+"1067",2020,"VNM","Thanh Hoa","elec_cons",2299,NA
+"1068",2020,"VNM","Thua Thien Hue","elec_cons",2121,NA
+"1069",2020,"VNM","Tien Giang","elec_cons",2263,NA
+"1070",2020,"VNM","Tra Vinh","elec_cons",2180,NA
+"1071",2020,"VNM","Tuyen Quang","elec_cons",1970,NA
+"1072",2020,"VNM","Vinh Long","elec_cons",2220,NA
+"1073",2020,"VNM","Vinh Phuc","elec_cons",3365,NA
+"1074",2020,"VNM","Yen Bai","elec_cons",1923,NA
+"1075",2020,"VNM","An Giang","gas_cons",630,NA
+"1076",2020,"VNM","Ba Ria - Vung Tau","gas_cons",700,NA
+"1077",2020,"VNM","Bac Giang","gas_cons",730,NA
+"1078",2020,"VNM","Bac Kan","gas_cons",443,NA
+"1079",2020,"VNM","Bac Lieu","gas_cons",862,NA
+"1080",2020,"VNM","Bac Ninh","gas_cons",793,NA
+"1081",2020,"VNM","Ben Tre","gas_cons",834,NA
+"1082",2020,"VNM","Binh Dinh","gas_cons",611,NA
+"1083",2020,"VNM","Binh Duong","gas_cons",841,NA
+"1084",2020,"VNM","Binh Phuoc","gas_cons",733,NA
+"1085",2020,"VNM","Binh Thuan","gas_cons",617,NA
+"1086",2020,"VNM","Ca Mau","gas_cons",789,NA
+"1087",2020,"VNM","Can Tho","gas_cons",904,NA
+"1088",2020,"VNM","Cao Bang","gas_cons",303,NA
+"1089",2020,"VNM","Da Nang","gas_cons",771,NA
+"1090",2020,"VNM","Dac Lak","gas_cons",553,NA
+"1091",2020,"VNM","Dak Nong","gas_cons",592,NA
+"1092",2020,"VNM","Dien Bien","gas_cons",575,NA
+"1093",2020,"VNM","Dong Nai","gas_cons",833,NA
+"1094",2020,"VNM","Dong Thap","gas_cons",643,NA
+"1095",2020,"VNM","Gia Lai","gas_cons",654,NA
+"1096",2020,"VNM","Ha Giang","gas_cons",710,NA
+"1097",2020,"VNM","Ha Nam","gas_cons",751,NA
+"1098",2020,"VNM","Ha Noi","gas_cons",846,NA
+"1099",2020,"VNM","Ha Tinh","gas_cons",579,NA
+"1100",2020,"VNM","Hai Duong","gas_cons",873,NA
+"1101",2020,"VNM","Hai Phong","gas_cons",869,NA
+"1102",2020,"VNM","Hau Giang","gas_cons",671,NA
+"1103",2020,"VNM","Ho Chi Minh","gas_cons",1163,NA
+"1104",2020,"VNM","Hoa Binh","gas_cons",791,NA
+"1105",2020,"VNM","Hung Yen","gas_cons",714,NA
+"1106",2020,"VNM","Khanh Hoa","gas_cons",774,NA
+"1107",2020,"VNM","Kien Giang","gas_cons",697,NA
+"1108",2020,"VNM","Kon Tum","gas_cons",546,NA
+"1109",2020,"VNM","Lai Chau","gas_cons",570,NA
+"1110",2020,"VNM","Lam Dong","gas_cons",796,NA
+"1111",2020,"VNM","Lang Son","gas_cons",712,NA
+"1112",2020,"VNM","Lao Cai","gas_cons",570,NA
+"1113",2020,"VNM","Long An","gas_cons",724,NA
+"1114",2020,"VNM","Nam Dinh","gas_cons",814,NA
+"1115",2020,"VNM","Nghe An","gas_cons",574,NA
+"1116",2020,"VNM","Ninh Binh","gas_cons",916,NA
+"1117",2020,"VNM","Ninh Thuan","gas_cons",603,NA
+"1118",2020,"VNM","Phu Tho","gas_cons",804,NA
+"1119",2020,"VNM","Phu Yen","gas_cons",640,NA
+"1120",2020,"VNM","Quang Binh","gas_cons",845,NA
+"1121",2020,"VNM","Quang Nam","gas_cons",780,NA
+"1122",2020,"VNM","Quang Ngai","gas_cons",557,NA
+"1123",2020,"VNM","Quang Ninh","gas_cons",971,NA
+"1124",2020,"VNM","Quang Tri","gas_cons",557,NA
+"1125",2020,"VNM","Soc Trang","gas_cons",738,NA
+"1126",2020,"VNM","Son La","gas_cons",590,NA
+"1127",2020,"VNM","Tay Ninh","gas_cons",756,NA
+"1128",2020,"VNM","Thai Binh","gas_cons",922,NA
+"1129",2020,"VNM","Thai Nguyen","gas_cons",915,NA
+"1130",2020,"VNM","Thanh Hoa","gas_cons",686,NA
+"1131",2020,"VNM","Thua Thien Hue","gas_cons",710,NA
+"1132",2020,"VNM","Tien Giang","gas_cons",771,NA
+"1133",2020,"VNM","Tra Vinh","gas_cons",489,NA
+"1134",2020,"VNM","Tuyen Quang","gas_cons",660,NA
+"1135",2020,"VNM","Vinh Long","gas_cons",587,NA
+"1136",2020,"VNM","Vinh Phuc","gas_cons",674,NA
+"1137",2020,"VNM","Yen Bai","gas_cons",623,NA
+"1138",2020,"VNM","An Giang","totbiom_cons",316,NA
+"1139",2020,"VNM","Ba Ria - Vung Tau","totbiom_cons",58,NA
+"1140",2020,"VNM","Bac Giang","totbiom_cons",281,NA
+"1141",2020,"VNM","Bac Kan","totbiom_cons",2037,NA
+"1142",2020,"VNM","Bac Lieu","totbiom_cons",348,NA
+"1143",2020,"VNM","Bac Ninh","totbiom_cons",231,NA
+"1144",2020,"VNM","Ben Tre","totbiom_cons",688,NA
+"1145",2020,"VNM","Binh Dinh","totbiom_cons",511,NA
+"1146",2020,"VNM","Binh Duong","totbiom_cons",53,NA
+"1147",2020,"VNM","Binh Phuoc","totbiom_cons",240,NA
+"1148",2020,"VNM","Binh Thuan","totbiom_cons",24,NA
+"1149",2020,"VNM","Ca Mau","totbiom_cons",308,NA
+"1150",2020,"VNM","Can Tho","totbiom_cons",246,NA
+"1151",2020,"VNM","Cao Bang","totbiom_cons",1218,NA
+"1152",2020,"VNM","Da Nang","totbiom_cons",2,NA
+"1153",2020,"VNM","Dac Lak","totbiom_cons",505,NA
+"1154",2020,"VNM","Dak Nong","totbiom_cons",599,NA
+"1155",2020,"VNM","Dien Bien","totbiom_cons",1681,NA
+"1156",2020,"VNM","Dong Nai","totbiom_cons",185,NA
+"1157",2020,"VNM","Dong Thap","totbiom_cons",1244,NA
+"1158",2020,"VNM","Gia Lai","totbiom_cons",775,NA
+"1159",2020,"VNM","Ha Giang","totbiom_cons",1407,NA
+"1160",2020,"VNM","Ha Nam","totbiom_cons",293,NA
+"1161",2020,"VNM","Ha Noi","totbiom_cons",103,NA
+"1162",2020,"VNM","Ha Tinh","totbiom_cons",706,NA
+"1163",2020,"VNM","Hai Duong","totbiom_cons",121,NA
+"1164",2020,"VNM","Hai Phong","totbiom_cons",426,NA
+"1165",2020,"VNM","Hau Giang","totbiom_cons",836,NA
+"1166",2020,"VNM","Ho Chi Minh","totbiom_cons",177,NA
+"1167",2020,"VNM","Hoa Binh","totbiom_cons",588,NA
+"1168",2020,"VNM","Hung Yen","totbiom_cons",143,NA
+"1169",2020,"VNM","Khanh Hoa","totbiom_cons",65,NA
+"1170",2020,"VNM","Kien Giang","totbiom_cons",273,NA
+"1171",2020,"VNM","Kon Tum","totbiom_cons",536,NA
+"1172",2020,"VNM","Lai Chau","totbiom_cons",1724,NA
+"1173",2020,"VNM","Lam Dong","totbiom_cons",156,NA
+"1174",2020,"VNM","Lang Son","totbiom_cons",723,NA
+"1175",2020,"VNM","Lao Cai","totbiom_cons",1354,NA
+"1176",2020,"VNM","Long An","totbiom_cons",628,NA
+"1177",2020,"VNM","Nam Dinh","totbiom_cons",192,NA
+"1178",2020,"VNM","Nghe An","totbiom_cons",468,NA
+"1179",2020,"VNM","Ninh Binh","totbiom_cons",30,NA
+"1180",2020,"VNM","Ninh Thuan","totbiom_cons",333,NA
+"1181",2020,"VNM","Phu Tho","totbiom_cons",467,NA
+"1182",2020,"VNM","Phu Yen","totbiom_cons",62,NA
+"1183",2020,"VNM","Quang Binh","totbiom_cons",433,NA
+"1184",2020,"VNM","Quang Nam","totbiom_cons",682,NA
+"1185",2020,"VNM","Quang Ngai","totbiom_cons",954,NA
+"1186",2020,"VNM","Quang Ninh","totbiom_cons",346,NA
+"1187",2020,"VNM","Quang Tri","totbiom_cons",1527,NA
+"1188",2020,"VNM","Soc Trang","totbiom_cons",594,NA
+"1189",2020,"VNM","Son La","totbiom_cons",1390,NA
+"1190",2020,"VNM","Tay Ninh","totbiom_cons",126,NA
+"1191",2020,"VNM","Thai Binh","totbiom_cons",184,NA
+"1192",2020,"VNM","Thai Nguyen","totbiom_cons",743,NA
+"1193",2020,"VNM","Thanh Hoa","totbiom_cons",769,NA
+"1194",2020,"VNM","Thua Thien Hue","totbiom_cons",531,NA
+"1195",2020,"VNM","Tien Giang","totbiom_cons",455,NA
+"1196",2020,"VNM","Tra Vinh","totbiom_cons",1221,NA
+"1197",2020,"VNM","Tuyen Quang","totbiom_cons",1020,NA
+"1198",2020,"VNM","Vinh Long","totbiom_cons",851,NA
+"1199",2020,"VNM","Vinh Phuc","totbiom_cons",214,NA
+"1200",2020,"VNM","Yen Bai","totbiom_cons",1905,NA
+"1201",2021,"MNG","Arhangay","elec_cons",1398,"mn-ar"
+"1202",2021,"MNG","Bayan-Olgiy","elec_cons",2332,"mn-bo"
+"1203",2021,"MNG","Bayanhongor","elec_cons",895,"mn-bh"
+"1204",2021,"MNG","Bulgan","elec_cons",2012,"mn-bu"
+"1205",2021,"MNG","Darhan-Uul","elec_cons",2656,"mn-da"
+"1206",2021,"MNG","Dornod","elec_cons",1756,"mn-dd"
+"1207",2021,"MNG","Dornogovi","elec_cons",2381,"mn-dg"
+"1208",2021,"MNG","Dundgovi","elec_cons",1086,"mn-du"
+"1209",2021,"MNG","Dzavhan","elec_cons",1929,"mn-dz"
+"1210",2021,"MNG","Govi-Altay","elec_cons",1841,"mn-ga"
+"1211",2021,"MNG","Hentiy","elec_cons",1304,"mn-hn"
+"1212",2021,"MNG","Hovd","elec_cons",1239,"mn-hd"
+"1213",2021,"MNG","Hovsgol","elec_cons",1206,"mn-hg"
+"1214",2021,"MNG","Omnogovi","elec_cons",2520,"mn-og"
+"1215",2021,"MNG","Orhon","elec_cons",2110,"mn-er"
+"1216",2021,"MNG","Ovorhangay","elec_cons",1438,"mn-oh"
+"1217",2021,"MNG","Selenge","elec_cons",2127,"mn-sl"
+"1218",2021,"MNG","Suhbaatar","elec_cons",1922,"mn-sb"
+"1219",2021,"MNG","Tov","elec_cons",2315,"mn-to"
+"1220",2021,"MNG","Ulaanbaatar","elec_cons",1808,"mn-ub"
+"1221",2021,"MNG","Uvs","elec_cons",1559,"mn-uv"
+"1222",2021,"MNG","Arhangay","gas_cons",1,"mn-ar"
+"1223",2021,"MNG","Bayan-Olgiy","gas_cons",17,"mn-bo"
+"1224",2021,"MNG","Bayanhongor","gas_cons",2,"mn-bh"
+"1225",2021,"MNG","Bulgan","gas_cons",0,"mn-bu"
+"1226",2021,"MNG","Darhan-Uul","gas_cons",0,"mn-da"
+"1227",2021,"MNG","Dornod","gas_cons",2,"mn-dd"
+"1228",2021,"MNG","Dornogovi","gas_cons",2,"mn-dg"
+"1229",2021,"MNG","Dundgovi","gas_cons",54,"mn-du"
+"1230",2021,"MNG","Dzavhan","gas_cons",0,"mn-dz"
+"1231",2021,"MNG","Govi-Altay","gas_cons",1,"mn-ga"
+"1232",2021,"MNG","Hentiy","gas_cons",17,"mn-hn"
+"1233",2021,"MNG","Hovd","gas_cons",0,"mn-hd"
+"1234",2021,"MNG","Hovsgol","gas_cons",0,"mn-hg"
+"1235",2021,"MNG","Omnogovi","gas_cons",23,"mn-og"
+"1236",2021,"MNG","Orhon","gas_cons",0,"mn-er"
+"1237",2021,"MNG","Ovorhangay","gas_cons",3,"mn-oh"
+"1238",2021,"MNG","Selenge","gas_cons",1,"mn-sl"
+"1239",2021,"MNG","Suhbaatar","gas_cons",1,"mn-sb"
+"1240",2021,"MNG","Tov","gas_cons",48,"mn-to"
+"1241",2021,"MNG","Ulaanbaatar","gas_cons",3,"mn-ub"
+"1242",2021,"MNG","Uvs","gas_cons",0,"mn-uv"
+"1243",2021,"MNG","Arhangay","totbiom_cons",15853,"mn-ar"
+"1244",2021,"MNG","Bayan-Olgiy","totbiom_cons",11371,"mn-bo"
+"1245",2021,"MNG","Bayanhongor","totbiom_cons",9131,"mn-bh"
+"1246",2021,"MNG","Bulgan","totbiom_cons",16949,"mn-bu"
+"1247",2021,"MNG","Darhan-Uul","totbiom_cons",10668,"mn-da"
+"1248",2021,"MNG","Dornod","totbiom_cons",11296,"mn-dd"
+"1249",2021,"MNG","Dornogovi","totbiom_cons",12726,"mn-dg"
+"1250",2021,"MNG","Dundgovi","totbiom_cons",10536,"mn-du"
+"1251",2021,"MNG","Dzavhan","totbiom_cons",21831,"mn-dz"
+"1252",2021,"MNG","Govi-Altay","totbiom_cons",6058,"mn-ga"
+"1253",2021,"MNG","Hentiy","totbiom_cons",14642,"mn-hn"
+"1254",2021,"MNG","Hovd","totbiom_cons",4884,"mn-hd"
+"1255",2021,"MNG","Hovsgol","totbiom_cons",22942,"mn-hg"
+"1256",2021,"MNG","Omnogovi","totbiom_cons",3470,"mn-og"
+"1257",2021,"MNG","Orhon","totbiom_cons",6139,"mn-er"
+"1258",2021,"MNG","Ovorhangay","totbiom_cons",11944,"mn-oh"
+"1259",2021,"MNG","Selenge","totbiom_cons",17962,"mn-sl"
+"1260",2021,"MNG","Suhbaatar","totbiom_cons",12717,"mn-sb"
+"1261",2021,"MNG","Tov","totbiom_cons",8829,"mn-to"
+"1262",2021,"MNG","Ulaanbaatar","totbiom_cons",6719,"mn-ub"
+"1263",2021,"MNG","Uvs","totbiom_cons",13828,"mn-uv"
