@@ -1,0 +1,601 @@
+---
+title: "Evaluation and Comparison of Algorithms"
+author: "Valentina Heinze"
+date: "2025-01-16"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## 1 Setup
+
+*Packages*
+```{r packages, echo=FALSE, include=FALSE, warning=FALSE, message=FALSE}
+library(pacman)
+library(here)
+library(kableExtra)
+library(scales)
+library(modelsummary)
+library(countrycode)
+library(WDI)
+library(zoo)
+library(dplyr)
+library(tidyr)
+library(stringr)
+library(readr)
+library(naniar)
+library(patchwork)
+library(tidylog)
+library(ggplot2)
+library(ggridges)
+library(ggrepel)
+library(gridExtra)
+library(openxlsx)
+library(corrplot)
+library(writexl)
+library(readr)
+library(missForest)
+library(corrplot)
+library(knitr)
+library(Hmisc)
+library(rms)
+library(mice)
+library(reshape2)
+```
+
+
+*Data*
+```{r}
+IND2011_noNA_rural <- read.csv("data/IND2011_noNA.rural.csv")
+IND2011_noNA_urban <- read.csv("data/IND2011_noNA.urban.csv")
+IND2011_noNA <- rbind(IND2011_noNA_urban, IND2011_noNA_rural)
+
+IND2011_mask_rural <- read.csv("data/2011.IND.rural.csv")
+IND2011_mask_urban <- read.csv("data/2011.IND.urban.csv")
+IND2011_mask <- rbind(IND2011_mask_urban, IND2011_mask_rural)
+
+IND_u <- IND2011_mask_urban[,c("urban","head_age","nrooms","head_literate", "hhsize","tv","music", "fridge", "exp", "head_male","frwd_exp","frwd_cons","petrol_exp", "scooter","car", "publictransport_exp","publictransport","washmach","elec_any","totbiom_cons","elec_cons","gas_cons")]
+IND_r <- IND2011_mask_rural[,c("urban","head_age","nrooms","head_literate", "hhsize","tv","music", "fridge", "exp", "head_male","frwd_exp","frwd_cons","petrol_exp", "scooter","car", "publictransport_exp","publictransport","washmach","elec_any","totbiom_cons","elec_cons","gas_cons")]
+```
+
+##2 Imputation
+
+*MissForest*
+```{r}
+
+miss_u <- missForest(IND_u)
+miss_r <- missForest(IND_r)
+
+missF <- rbind(miss_u$ximp, miss_r$ximp)
+```
+The missForest took >5 hrs to fit just for India, so does not seem like a computationally feasible method.
+
+
+
+*Mice*
+```{r, echo=FALSE}
+
+mice_u <- complete(mice(IND2011_mask_urban[,c("urban","head_age","nrooms","head_literate", "hhsize","tv","music", "fridge", "exp", "head_male","frwd_exp","frwd_cons","petrol_exp", "scooter","car", "publictransport_exp","publictransport","washmach","elec_any","totbiom_cons","elec_cons","gas_cons")]))
+
+mice_r <-  complete(mice(IND2011_mask_rural[,c("urban","head_age","nrooms","head_literate", "hhsize","tv","music", "fridge", "exp", "head_male","frwd_exp","frwd_cons","petrol_exp", "scooter","car", "publictransport_exp","publictransport","washmach","elec_any","totbiom_cons","elec_cons","gas_cons")]))
+
+imp_mice <- rbind(mice_u, mice_r)
+```
+
+
+```{r}
+mice_u2 <- mice((IND2011_mask_urban[,c("urban","head_age","nrooms","head_literate", "hhsize","tv","music", "fridge", "exp", "head_male","frwd_exp","frwd_cons","petrol_exp", "scooter","car", "publictransport_exp","publictransport","washmach","elec_any","totbiom_cons","elec_cons","gas_cons")]), m = 5, print = FALSE)
+
+# Extract completed datasets and calculate the mean
+completed_datasets <- lapply(1:5, function(i) complete(mice_u2, i))
+
+```
+
+
+```{r}
+
+# Create an empty dataframe with the same structure as the first dataframe in completed_datasets
+df_new <- data.frame(matrix(NA, nrow = nrow(completed_datasets[[1]]), ncol = ncol(completed_datasets[[1]])))
+colnames(df_new) <- colnames(completed_datasets[[1]])
+rownames(df_new) <- rownames(completed_datasets[[1]])
+
+# Loop through each column to compute element-wise averages
+for (col in colnames(completed_datasets[[1]])) {
+  # Extract the column across all dataframes in completed_datasets
+  df_cols <- sapply(completed_datasets, `[[`, col)
+  
+  # Compute the mean for each entry (row-wise mean for the column across dataframes)
+  df_new[[col]] <- rowMeans(df_cols, na.rm = TRUE)
+}
+
+# Result
+mice_u3 <- df_new
+
+```
+
+
+```{r}
+mice_r2 <- mice(IND2011_mask_rural[,c("urban","head_age","nrooms","head_literate", "hhsize","tv","music", "fridge", "exp", "head_male","frwd_exp","frwd_cons","petrol_exp", "scooter","car", "publictransport_exp","publictransport","washmach","elec_any","totbiom_cons","elec_cons","gas_cons")])
+completed_datasets <- lapply(1:5, function(i) complete(mice_r2, i))
+
+df_new <- data.frame(matrix(NA, nrow = nrow(completed_datasets[[1]]), ncol = ncol(completed_datasets[[1]])))
+colnames(df_new) <- colnames(completed_datasets[[1]])
+rownames(df_new) <- rownames(completed_datasets[[1]])
+
+# Loop through each column to compute element-wise averages
+for (col in colnames(completed_datasets[[1]])) {
+  # Extract the column across all dataframes in completed_datasets
+  df_cols <- sapply(completed_datasets, `[[`, col)
+  
+  # Compute the mean for each entry (row-wise mean for the column across dataframes)
+  df_new[[col]] <- rowMeans(df_cols, na.rm = TRUE)
+}
+
+# Result
+mice_r3 <- df_new
+
+```
+```{r}
+imp_mice <- rbind(mice_u3, mice_r3)
+
+```
+
+
+*aregImpute*
+```{r}
+IND_ur <- IND_u[,-c(7,16,17)]
+
+
+d <- datadist(IND_ur)
+options(datadist = "d")
+imp_areg <- aregImpute(
+  ~  head_age+ nrooms+head_literate+hhsize+tv+fridge+exp+head_male+frwd_exp+frwd_cons+petrol_exp+scooter+car+washmach+elec_any+totbiom_cons+elec_cons+gas_cons,
+  data = IND_ur,         # Dataset
+  n.impute = 5,             # Number of imputations
+  nk = 3                    # Number of knots for splines
+)
+
+
+areg_u <-  as.data.frame(impute.transcan(imp_areg, imputation=1, data=IND_u, list.out=TRUE))
+areg_u$urban =1
+
+
+
+```
+
+```{r}
+apply(IND_re,2, function(x) {length(unique(x))})
+
+IND_re$head_male <- replace(IND_re$head_male, 0.5,NA)
+
+apply(IND_re,2, function(x) {length(unique(x))})
+table(IND_re$head_male)
+```
+
+```{r}
+IND_re$head_male[IND_re$head_male == 0.5] <- NA
+apply(IND_re,2, function(x) {length(unique(x))})
+table(IND_re$head_male)
+```
+
+
+```{r}
+IND_re <- IND_r[,-c(7,16,17)]
+IND_re$head_male[IND_re$head_male == 0.5] <- NA
+d <- datadist(IND_re)
+options(datadist = "d")
+
+imp_areg <- aregImpute(
+  ~  head_age+ nrooms+head_literate+hhsize+tv+fridge+exp+head_male+frwd_exp+frwd_cons+petrol_exp+scooter+car+washmach+elec_any+totbiom_cons+elec_cons+gas_cons,
+  data = IND_re,         # Dataset
+  n.impute = 5,             # Number of imputations
+  nk = 3                    # Number of knots for splines
+)
+
+
+areg_r <-  as.data.frame(impute.transcan(imp_areg, imputation=1, data=IND_re, list.out=TRUE))
+areg_r$urban=0
+areg <- rbind(areg_u, areg_r)
+```
+
+
+
+*WGAIN*
+```{r}
+SGAIN <- rbind(read.csv("data/2011.IND.urbanimputation_run2_SGAIN_001.csv"),read.csv("data/2011.IND.ruralimputation_run2_SGAIN_001.csv"))
+WSGAINGP <- rbind(read.csv("data/2011.IND.urbanimputation_run2_WSGAIN-GP_001.csv"),read.csv("data/2011.IND.ruralimputation_run2_WSGAIN-GP_001.csv"))
+
+WSGAINCP <- rbind(read.csv("data/2011.IND.urbanimputation_run2_WSGAIN-CP_001.csv"),read.csv("data/2011.IND.ruralimputation_run2_WSGAIN-CP_001.csv"))
+```
+
+\  
+
+# Evaluation
+
+*Imputed vs. Original Values*
+
+```{r, fig.height=12, fig.width=18}
+par(mfrow=c(2,3))
+
+plot(IND2011_noNA$elec_cons[is.na(IND2011_mask$elec_cons)],SGAIN$elec_cons[is.na(IND2011_mask$elec_cons)] , xlim=c(0,8), ylim=c(0,8), col= "steelblue", xlab= "Original 'elec_cons'",ylab="Imputed 'elec_cons'", main="IND2011: SGAIN imputation for 'elec_cons'")
+
+plot(IND2011_noNA$totbiom_cons[is.na(IND2011_mask$totbiom_cons)],SGAIN$totbiom_cons[is.na(IND2011_mask$totbiom_cons)] , col= "steelblue", xlab= "Original 'totbiom_cons'",ylab="Imputed 'totbiom_cons'", main="IND2011: SGAIN imputation for 'totbiom_cons'")
+
+plot(IND2011_noNA$gas_cons[is.na(IND2011_mask$gas_cons)],SGAIN$gas_cons[is.na(IND2011_mask$gas_cons)] , col= "steelblue", xlab= "Original 'gas_cons'",ylab="Imputed 'gas_cons'", main="IND2011: SGAIN imputation for 'gas_cons'")
+plot(IND2011_noNA$elec_cons[is.na(IND2011_mask$elec_cons)],missF$elec_cons[is.na(IND2011_mask$elec_cons)] , xlim=c(0,8), ylim=c(0,8), col= "steelblue", xlab= "Original 'elec_cons'",ylab="Imputed 'elec_cons'", main="IND2011: MissForest imputation for 'elec_cons'")
+
+plot(IND2011_noNA$totbiom_cons[is.na(IND2011_mask$totbiom_cons)],missF$totbiom_cons[is.na(IND2011_mask$totbiom_cons)] , col= "steelblue", xlab= "Original 'totbiom_cons'",ylab="Imputed 'totbiom_cons'", main="IND2011: MissForest imputation for 'totbiom_cons'")
+
+plot(IND2011_noNA$gas_cons[is.na(IND2011_mask$gas_cons)],missF$gas_cons[is.na(IND2011_mask$gas_cons)] , col= "steelblue", xlab= "Original 'gas_cons'",ylab="Imputed 'gas_cons'", main="IND2011: MissForest imputation for 'gas_cons'")
+```
+
+
+
+```{r, fig.height=12, fig.width=18}
+# Residuals vs fitted values
+
+par(mfrow=c(2,3))
+
+plot(SGAIN$elec_cons[is.na(IND2011_mask$elec_cons)] , IND2011_noNA$elec_cons[is.na(IND2011_mask$elec_cons)]-SGAIN$elec_cons[is.na(IND2011_mask$elec_cons)],xlim=c(0,8), ylim=c(0,8), col= "steelblue", xlab= "Imputed 'elec_cons'",ylab="Original - Imputed 'elec_cons'", main="IND2011: SGAIN Errors for 'elec_cons'", cex.lab=1.5, cex.main=1.5)
+
+plot(SGAIN$totbiom_cons[is.na(IND2011_mask$totbiom_cons)] , IND2011_noNA$totbiom_cons[is.na(IND2011_mask$totbiom_cons)]-SGAIN$totbiom_cons[is.na(IND2011_mask$totbiom_cons)],col= "steelblue", xlab= "Imputed 'totbiom_cons'",ylab="Original - Imputed 'totbiom_cons'", main="IND2011: SGAIN Errors for 'totbiom_cons'", cex.lab=1.5, cex.main=1.5)
+
+plot(SGAIN$gas_cons[is.na(IND2011_mask$gas_cons)] , IND2011_noNA$gas_cons[is.na(IND2011_mask$gas_cons)]-SGAIN$gas_cons[is.na(IND2011_mask$gas_cons)],col= "steelblue", xlab= "Imputed 'gas_cons'",ylab="Original - Imputed 'gas_cons'", main="IND2011: SGAIN Errors for 'gas_cons'", cex.lab=1.5, cex.main=1.5)
+```
+
+```{r, fig.height=12, fig.width=18}
+par(mfrow=c(2,3))
+
+plot(IND2011_noNA$elec_cons[is.na(IND2011_mask$elec_cons)],missF$elec_cons[is.na(IND2011_mask$elec_cons)] , xlim=c(0,8), ylim=c(0,8), col= "steelblue", xlab= "Original 'elec_cons'",ylab="Imputed 'elec_cons'", main="IND2011: MissForest imputation for 'elec_cons'")
+
+plot(IND2011_noNA$totbiom_cons[is.na(IND2011_mask$totbiom_cons)],missF$totbiom_cons[is.na(IND2011_mask$totbiom_cons)] , col= "steelblue", xlab= "Original 'totbiom_cons'",ylab="Imputed 'totbiom_cons'", main="IND2011: MissForest imputation for 'totbiom_cons'")
+
+plot(IND2011_noNA$gas_cons[is.na(IND2011_mask$gas_cons)],missF$gas_cons[is.na(IND2011_mask$gas_cons)] , col= "steelblue", xlab= "Original 'gas_cons'",ylab="Imputed 'gas_cons'", main="IND2011: MissForest imputation for 'gas_cons'")
+```
+
+
+
+
+*Histogram of Deviations*
+
+```{r, fig.height=6, fig.width=11}
+par(mfrow=c(2,3))
+
+hist(imp_mice$totbiom_cons[is.na(IND2011_mask$totbiom_cons)]-IND2011_noNA$totbiom_cons[is.na(IND2011_mask$totbiom_cons)], breaks=150, main="IND2011: Deviation of Mice Imputations", xlab="Imputed - original 'totbiom_cons'", col="lightgrey", border="steelblue", probability=TRUE)
+
+hist(missF$totbiom_cons[is.na(IND2011_mask$totbiom_cons)]-IND2011_noNA$totbiom_cons[is.na(IND2011_mask$totbiom_cons)], breaks=150, main="IND2011: Deviation of Mice Imputations", xlab="Imputed - original 'totbiom_cons'", col="lightgrey", border="steelblue", probability=TRUE)
+
+hist(areg$totbiom_cons[is.na(IND2011_mask$totbiom_cons)]-IND2011_noNA$totbiom_cons[is.na(IND2011_mask$totbiom_cons)], breaks=150, main="IND2011: Deviation of aregImpute Imputations", xlab="Imputed - original 'totbiom_cons'", col="lightgrey", border="steelblue", probability=TRUE)
+
+hist(SGAIN$totbiom_cons[is.na(IND2011_mask$totbiom_cons)]-IND2011_noNA$totbiom_cons[is.na(IND2011_mask$totbiom_cons)], breaks=150, main="IND2011: Deviation of SGAIN Imputations", xlab="Imputed - original 'totbiom_cons'", col="lightgrey", border="steelblue", probability=TRUE)
+
+hist(WSGAINGP$totbiom_cons[is.na(IND2011_mask$totbiom_cons)]-IND2011_noNA$totbiom_cons[is.na(IND2011_mask$totbiom_cons)], breaks=150, main="IND2011: Deviation of WSGAIN-GP Imputations", xlab="Imputed - original 'totbiom_cons'", col="lightgrey", border="steelblue", probability=TRUE)
+
+hist(WSGAINCP$totbiom_cons[is.na(IND2011_mask$totbiom_cons)]-IND2011_noNA$totbiom_cons[is.na(IND2011_mask$totbiom_cons)], breaks=150, main="IND2011: Deviation of WSGAIN-CP Imputations", xlab="Imputed - original 'totbiom_cons'", col="lightgrey", border="steelblue", probability=TRUE)
+
+```
+
+```{r, fig.height=6, fig.width=11}
+par(mfrow=c(2,3))
+
+hist(imp_mice$elec_cons[is.na(IND2011_mask$elec_cons)]-IND2011_noNA$elec_cons[is.na(IND2011_mask$elec_cons)], breaks=150, main="IND2011: Deviation of Mice Imputations", xlab="Imputed - original 'elec_cons'", col="lightgrey", border="steelblue", probability=TRUE)
+
+hist(missF$elec_cons[is.na(IND2011_mask$elec_cons)]-IND2011_noNA$elec_cons[is.na(IND2011_mask$elec_cons)], breaks=150, main="IND2011: Deviation of Mice Imputations", xlab="Imputed - original 'elec_cons'", col="lightgrey", border="steelblue", probability=TRUE)
+
+
+hist(areg$elec_cons[is.na(IND2011_mask$elec_cons)]-IND2011_noNA$elec_cons[is.na(IND2011_mask$elec_cons)], breaks=150, main="IND2011: Deviation of aregImpute Imputations", xlab="Imputed - original 'elec_cons'", col="lightgrey", border="steelblue", probability=TRUE)
+
+hist(SGAIN$elec_cons[is.na(IND2011_mask$elec_cons)]-IND2011_noNA$elec_cons[is.na(IND2011_mask$elec_cons)], breaks=150, main="IND2011: Deviation of SGAIN Imputations", xlab="Imputed - original 'elec_cons'", col="lightgrey", border="steelblue", probability=TRUE)
+
+hist(WSGAINGP$elec_cons[is.na(IND2011_mask$elec_cons)]-IND2011_noNA$elec_cons[is.na(IND2011_mask$elec_cons)], breaks=150, main="IND2011: Deviation of WSGAIN-GP Imputations", xlab="Imputed - original 'elec_cons'", col="lightgrey", border="steelblue", probability=TRUE)
+
+hist(WSGAINCP$elec_cons[is.na(IND2011_mask$elec_cons)]-IND2011_noNA$elec_cons[is.na(IND2011_mask$elec_cons)], breaks=150, main="IND2011: Deviation of WSGAIN-CP Imputations", xlab="Imputed - original 'elec_cons'", col="lightgrey", border="steelblue", probability=TRUE)
+
+```
+
+```{r, fig.height=6, fig.width=11}
+par(mfrow=c(2,3))
+
+hist(imp_mice$gas_cons[is.na(IND2011_mask$gas_cons)]-IND2011_noNA$gas_cons[is.na(IND2011_mask$gas_cons)], breaks=150, main="IND2011: Deviation of Mice Imputations", xlab="Imputed - original 'gas_cons'", col="lightgrey", border="steelblue", probability=TRUE)
+
+hist(missF$gas_cons[is.na(IND2011_mask$gas_cons)]-IND2011_noNA$gas_cons[is.na(IND2011_mask$gas_cons)], breaks=150, main="IND2011: Deviation of Mice Imputations", xlab="Imputed - original 'gas_cons'", col="lightgrey", border="steelblue", probability=TRUE)
+
+hist(areg$gas_cons[is.na(IND2011_mask$gas_cons)]-IND2011_noNA$gas_cons[is.na(IND2011_mask$gas_cons)], breaks=150, main="IND2011: Deviation of aregImpute Imputations", xlab="Imputed - original 'gas_cons'", col="lightgrey", border="steelblue", probability=TRUE)
+
+hist(SGAIN$gas_cons[is.na(IND2011_mask$gas_cons)]-IND2011_noNA$gas_cons[is.na(IND2011_mask$gas_cons)], breaks=150, main="IND2011: Deviation of SGAIN Imputations", xlab="Imputed - original 'gas_cons'", col="lightgrey", border="steelblue", probability=TRUE)
+
+hist(WSGAINGP$gas_cons[is.na(IND2011_mask$gas_cons)]-IND2011_noNA$gas_cons[is.na(IND2011_mask$gas_cons)], breaks=150, main="IND2011: Deviation of WSGAIN-GP Imputations", xlab="Imputed - original 'gas_cons'", col="lightgrey", border="steelblue", probability=TRUE)
+
+hist(WSGAINCP$gas_cons[is.na(IND2011_mask$gas_cons)]-IND2011_noNA$gas_cons[is.na(IND2011_mask$gas_cons)], breaks=150, main="IND2011: Deviation of WSGAIN-CP Imputations", xlab="Imputed - original 'gas_cons'", col="lightgrey", border="steelblue", probability=TRUE)
+
+```
+
+
+
+```{r}
+hist(imp_mice$gas_cons, breaks=150, main="IND2011", xlab="Imputed - original 'gas_cons'", col="lightgrey", border="steelblue", probability=TRUE)
+```
+
+
+*RMSE Calculation*
+
+
+
+```{r}
+RMSE_missF <- c(sqrt(mean((missF$totbiom_cons[is.na(IND2011_mask$totbiom_cons)]-IND2011_noNA$totbiom_cons[is.na(IND2011_mask$totbiom_cons)])^2)),
+sqrt(mean((missF$elec_cons[is.na(IND2011_mask$elec_cons)]-IND2011_noNA$elec_cons[is.na(IND2011_mask$elec_cons)])^2, na.rm=TRUE)),
+sqrt(mean((missF$gas_cons[is.na(IND2011_mask$gas_cons)]-IND2011_noNA$gas_cons[is.na(IND2011_mask$gas_cons)])^2, na.rm=TRUE)))
+
+
+RMSE_mice <- c(sqrt(mean((imp_mice$totbiom_cons[is.na(IND2011_mask$totbiom_cons)]-IND2011_noNA$totbiom_cons[is.na(IND2011_mask$totbiom_cons)])^2)),
+sqrt(mean((imp_mice$elec_cons[is.na(IND2011_mask$elec_cons)]-IND2011_noNA$elec_cons[is.na(IND2011_mask$elec_cons)])^2, na.rm=TRUE)),
+sqrt(mean((imp_mice$gas_cons[is.na(IND2011_mask$gas_cons)]-IND2011_noNA$gas_cons[is.na(IND2011_mask$gas_cons)])^2, na.rm=TRUE)))
+
+RMSE_areg <- c(sqrt(mean((areg$totbiom_cons[is.na(IND2011_mask$totbiom_cons)]-IND2011_noNA$totbiom_cons[is.na(IND2011_mask$totbiom_cons)])^2)),
+sqrt(mean((areg$elec_cons[is.na(IND2011_mask$elec_cons)]-IND2011_noNA$elec_cons[is.na(IND2011_mask$elec_cons)])^2, na.rm=TRUE)),
+sqrt(mean((areg$gas_cons[is.na(IND2011_mask$gas_cons)]-IND2011_noNA$gas_cons[is.na(IND2011_mask$gas_cons)])^2, na.rm=TRUE)))
+
+RMSE_SGAIN <- c(sqrt(mean((SGAIN$totbiom_cons[is.na(IND2011_mask$totbiom_cons)]-IND2011_noNA$totbiom_cons[is.na(IND2011_mask$totbiom_cons)])^2, na.rm=TRUE)),
+sqrt(mean((SGAIN$elec_cons[is.na(IND2011_mask$elec_cons)]-IND2011_noNA$elec_cons[is.na(IND2011_mask$elec_cons)])^2, na.rm=TRUE)),
+sqrt(mean((SGAIN$gas_cons[is.na(IND2011_mask$gas_cons)]-IND2011_noNA$gas_cons[is.na(IND2011_mask$gas_cons)])^2, na.rm=TRUE)))
+
+RMSE_WSGAINGP <- c(sqrt(mean((WSGAINGP$totbiom_cons[is.na(IND2011_mask$totbiom_cons)]-IND2011_noNA$totbiom_cons[is.na(IND2011_mask$totbiom_cons)])^2, na.rm=TRUE)),
+sqrt(mean((WSGAINGP$elec_cons[is.na(IND2011_mask$elec_cons)]-IND2011_noNA$elec_cons[is.na(IND2011_mask$elec_cons)])^2, na.rm=TRUE)),
+sqrt(mean((WSGAINGP$gas_cons[is.na(IND2011_mask$gas_cons)]-IND2011_noNA$gas_cons[is.na(IND2011_mask$gas_cons)])^2, na.rm=TRUE)))
+
+RMSE_WSGAINCP <- c(sqrt(mean((WSGAINCP$totbiom_cons[is.na(IND2011_mask$totbiom_cons)]-IND2011_noNA$totbiom_cons[is.na(IND2011_mask$totbiom_cons)])^2, na.rm=TRUE)),
+sqrt(mean((WSGAINCP$elec_cons[is.na(IND2011_mask$elec_cons)]-IND2011_noNA$elec_cons[is.na(IND2011_mask$elec_cons)])^2, na.rm=TRUE)),
+sqrt(mean((WSGAINCP$gas_cons[is.na(IND2011_mask$gas_cons)]-IND2011_noNA$gas_cons[is.na(IND2011_mask$gas_cons)])^2, na.rm=TRUE)))
+
+df <- rbind(RMSE_missF, RMSE_mice, RMSE_areg, RMSE_SGAIN, RMSE_WSGAINGP, RMSE_WSGAINCP)
+rownames(df) =c("MissForest","MICE", "aregImpute", "SGAIN", "WSGAIN-GP","WSGAIN-CP")
+colnames(df) = c("'totbiom_cons'", "'elec_cons'","'gas_cons'")
+
+knitr::kable(df)
+
+```
+
+
+
+```{r}
+1.4150860/sd(IND2011_noNA$totbiom_cons)
+sd(IND2011_noNA$totbiom_cons)
+```
+$$\frac{RMSE}{sample \ sd}=\frac{1.4150860}{2.450426}=0.577$$
+
+
+
+
+```{r}
+# Reshape the data for ggplot
+
+df <- rbind(
+
+  data.frame(value = RMSE_missF[1], group = "MissForest", variable = "totbiom_cons"),
+  data.frame(value = RMSE_mice[1], group = "MICE", variable = "totbiom_cons"),
+  data.frame(value = RMSE_areg[1], group = "aregImpute", variable = "totbiom_cons"),
+  data.frame(value = RMSE_SGAIN[1], group = "SGAIN", variable = "totbiom_cons"),
+  data.frame(value = RMSE_WSGAINCP[1], group = "WSGAIN-CP", variable = "totbiom_cons"),
+  data.frame(value = RMSE_WSGAINGP[1], group = "WSGAIN-GP", variable = "totbiom_cons"),
+  
+  
+  data.frame(value = RMSE_missF[2], group = "MissForest", variable = "elec_cons"),
+  data.frame(value = RMSE_mice[2], group = "MICE", variable = "elec_cons"),
+  data.frame(value = RMSE_areg[2],  group = "aregImpute", variable = "elec_cons"),
+  data.frame(value = RMSE_SGAIN[2], group = "SGAIN", variable = "elec_cons"),
+  data.frame(value = RMSE_WSGAINCP[2], group = "WSGAIN-CP", variable = "elec_cons"),
+  data.frame(value = RMSE_WSGAINGP[2], group = "WSGAIN-GP", variable = "elec_cons"),
+  
+  
+  data.frame(value = RMSE_missF[3],  group = "MissForest", variable = "gas_cons"),
+  data.frame(value = RMSE_mice[3], group = "MICE", variable = "gas_cons"),
+  data.frame(value = RMSE_areg[3], group = "aregImpute", variable = "gas_cons"),
+  data.frame(value = RMSE_SGAIN[3], group = "SGAIN", variable = "gas_cons"),
+  data.frame(value = RMSE_WSGAINCP[3],  group = "WSGAIN-CP", variable = "gas_cons"),
+  data.frame(value = RMSE_WSGAINGP[3], group = "WSGAIN-GP", variable = "gas_cons")
+)
+
+```
+
+
+
+```{r, fig.width=9, fig.height=5}
+library(ggplot2)
+
+# Bar plot using the new structure of df
+ggplot(df, aes(x = group, y = value, fill = group)) +
+  geom_bar(stat = "identity", position = position_dodge(width = 1)) +
+  facet_wrap(
+    ~variable, 
+    scales = "free", 
+    nrow = 1, 
+    strip.position = "bottom"  # Move facet labels to the bottom
+  ) +
+  scale_fill_manual(
+    values = c( "lightgreen","skyblue","darkblue",  "pink", "orange", "coral"),
+    name = "Imputation Method"
+  ) +
+  labs(
+    title = "IND2011: RMSE of Imputation Methods by Variable",
+    x = "",
+    y = "RMSE"
+  ) +
+  theme_minimal() +
+  theme(
+    strip.text = element_text(size = 14, face = "bold"),  # Format facet labels
+    strip.placement = "outside",                         # Place labels outside the plot
+    axis.text.x = element_blank(),                       # Remove x-axis labels
+    axis.ticks.x = element_blank(),                      # Remove x-axis ticks
+    plot.title = element_text(hjust = 0.5, size = 20),
+    legend.position = "bottom"
+  )
+
+```
+
+
+```{r}
+names(RMSE_SGAIN) <- c("totbiom_cons", "elec_cons","gas_cons")
+sd<- cbind(sd(IND2011_noNA$totbiom_cons),
+sd(IND2011_noNA$elec_cons), sd(IND2011_noNA$gas_cons))
+
+RMSE_SGAIN/sd
+```
+
+
+
+
+
+
+*Boxplots*
+
+
+```{r}
+IND2011_noNA$exp_quintile <- cut(IND2011_noNA$exp,
+                          breaks = quantile(IND2011_noNA$exp, probs = seq(0, 1, by = 0.2), na.rm = TRUE),
+                          include.lowest = TRUE,
+                          labels = c("Q1", "Q2", "Q3", "Q4", "Q5"))
+
+
+missF$exp_quintile <- cut(missF$exp,
+                         breaks = quantile(missF$exp, probs = seq(0, 1, by = 0.2), na.rm = TRUE),
+                         include.lowest = TRUE,
+                         labels = c("Q1", "Q2", "Q3", "Q4", "Q5"))
+
+imp_mice$exp_quintile <- cut(imp_mice$exp,
+                         breaks = quantile(imp_mice$exp, probs = seq(0, 1, by = 0.2), na.rm = TRUE),
+                         include.lowest = TRUE,
+                         labels = c("Q1", "Q2", "Q3", "Q4", "Q5"))
+
+areg$exp_quintile <- cut(areg$exp,
+                         breaks = quantile(areg$exp, probs = seq(0, 1, by = 0.2), na.rm = TRUE),
+                         include.lowest = TRUE,
+                         labels = c("Q1", "Q2", "Q3", "Q4", "Q5"))
+
+SGAIN$exp_quintile <- cut(SGAIN$exp,
+                         breaks = quantile(SGAIN$exp, probs = seq(0, 1, by = 0.2), na.rm = TRUE),
+                         include.lowest = TRUE,
+                         labels = c("Q1", "Q2", "Q3", "Q4", "Q5"))
+WSGAINCP$exp_quintile <- cut(WSGAINCP$exp,
+                         breaks = quantile(WSGAINCP$exp, probs = seq(0, 1, by = 0.2), na.rm = TRUE),
+                         include.lowest = TRUE,
+                         labels = c("Q1", "Q2", "Q3", "Q4", "Q5"))
+WSGAINGP$exp_quintile <- cut(WSGAINGP$exp,
+                         breaks = quantile(WSGAINGP$exp, probs = seq(0, 1, by = 0.2), na.rm = TRUE),
+                         include.lowest = TRUE,
+                         labels = c("Q1", "Q2", "Q3", "Q4", "Q5"))
+
+
+```
+
+
+```{r, fig.height=8,fig.width=15}
+library(ggplot2)
+
+combined <- rbind(
+  data.frame(value = IND2011_noNA$totbiom_cons, quintile = IND2011_noNA$exp_quintile, group = "0riginal", variable = "totbiom_cons", urban = IND2011_noNA$urban),
+  data.frame(value = missF$totbiom_cons, quintile = missF$exp_quintile, group = "MissForest", variable = "totbiom_cons", urban = missF$urban),
+  data.frame(value = imp_mice$totbiom_cons, quintile = imp_mice$exp_quintile, group = "MICE", variable = "totbiom_cons", urban = imp_mice$urban),
+  data.frame(value = areg$totbiom_cons, quintile = areg$exp_quintile, group = "aregImpute", variable = "totbiom_cons", urban=areg$urban),
+  data.frame(value = SGAIN$totbiom_cons, quintile = SGAIN$exp_quintile, group = "SGAIN", variable = "totbiom_cons", urban=SGAIN$urban),
+  data.frame(value = WSGAINCP$totbiom_cons, quintile = WSGAINCP$exp_quintile, group = "WSGAIN-CP", variable = "totbiom_cons", urban=WSGAINCP$urban),
+  data.frame(value = WSGAINGP$totbiom_cons, quintile = WSGAINGP$exp_quintile, group = "WSGAIN-GP", variable = "totbiom_cons", urban=WSGAINGP$urban),
+  
+  data.frame(value = IND2011_noNA$elec_cons, quintile = IND2011_noNA$exp_quintile, group = "0riginal", variable = "elec_cons", urban = IND2011_noNA$urban),
+  data.frame(value = missF$elec_cons, quintile = missF$exp_quintile, group = "MissForest", variable = "elec_cons", urban = missF$urban),
+  data.frame(value = imp_mice$elec_cons, quintile = imp_mice$exp_quintile, group = "MICE", variable = "elec_cons", urban = imp_mice$urban),
+  data.frame(value = areg$elec_cons, quintile = areg$exp_quintile, group = "aregImpute", variable = "elec_cons", urban=areg$urban),
+  data.frame(value = SGAIN$elec_cons, quintile = SGAIN$exp_quintile, group = "SGAIN", variable = "elec_cons", urban=SGAIN$urban),
+  data.frame(value = WSGAINCP$elec_cons, quintile = WSGAINCP$exp_quintile, group = "WSGAIN-CP", variable = "elec_cons", urban=WSGAINCP$urban),
+  data.frame(value = WSGAINGP$elec_cons, quintile = WSGAINGP$exp_quintile, group = "WSGAIN-GP", variable = "elec_cons", urban=WSGAINCP$urban),
+  
+  data.frame(value = IND2011_noNA$gas_cons, quintile = IND2011_noNA$exp_quintile, group = "0riginal", variable = "gas_cons", urban = IND2011_noNA$urban),
+  data.frame(value = missF$gas_cons, quintile = missF$exp_quintile, group = "MissForest", variable = "gas_cons", urban = missF$urban),
+  data.frame(value = imp_mice$gas_cons, quintile = imp_mice$exp_quintile, group = "MICE", variable = "gas_cons", urban = imp_mice$urban),
+  data.frame(value = areg$gas_cons, quintile = areg$exp_quintile, group = "aregImpute", variable = "gas_cons", urban=areg$urban),
+  data.frame(value = SGAIN$gas_cons, quintile = SGAIN$exp_quintile, group = "SGAIN", variable = "gas_cons", urban=SGAIN$urban),
+  data.frame(value = WSGAINCP$gas_cons, quintile = WSGAINCP$exp_quintile, group = "WSGAIN-CP", variable = "gas_cons", urban=WSGAINCP$urban),
+  data.frame(value = WSGAINGP$gas_cons, quintile = WSGAINGP$exp_quintile, group = "WSGAIN-GP", variable = "gas_cons", urban=WSGAINGP$urban)
+)
+
+# Ensure variables and groups are structured properly
+ggplot(combined, aes(x = group, y = value, fill = group)) +
+  geom_boxplot() +
+  facet_wrap(~variable, scales = "free", nrow = 1) +  # Facet by variable with one row
+  scale_fill_manual(
+    values = c("lightyellow",  "lightgreen","skyblue","darkblue",  "pink", "orange", "coral"),
+    name = "Imputation Method"
+  ) +
+  labs(
+    title = "IND2011: Range of Variable Values",
+    x = "",
+    y = "Range of Values"
+  ) +
+  theme_minimal() +
+  theme(
+    strip.text = element_text(size = 12, face = "bold"),  # Format facet labels
+    axis.text.x = element_blank(),   # Rotate x-axis labels
+    plot.title = element_text(hjust = 0.5, size = 18),
+    legend.position = "right"
+  )
+
+```
+
+
+```{r, fig.height=8,fig.width=15}
+library(ggplot2)
+
+combined <- rbind(
+  data.frame(value = IND2011_noNA$totbiom_cons, quintile = IND2011_noNA$exp_quintile, group = "0riginal", variable = "totbiom_cons", urban = IND2011_noNA$urban)[is.na(IND2011_mask$totbiom_cons),],
+  data.frame(value = missF$totbiom_cons, quintile = missF$exp_quintile, group = "MissForest", variable = "totbiom_cons", urban = missF$urban)[is.na(IND2011_mask$totbiom_cons),],
+  data.frame(value = imp_mice$totbiom_cons, quintile = imp_mice$exp_quintile, group = "MICE", variable = "totbiom_cons", urban = imp_mice$urban)[is.na(IND2011_mask$totbiom_cons),],
+  data.frame(value = areg$totbiom_cons, quintile = areg$exp_quintile, group = "aregImpute", variable = "totbiom_cons", urban=areg$urban),
+  data.frame(value = SGAIN$totbiom_cons, quintile = SGAIN$exp_quintile, group = "SGAIN", variable = "totbiom_cons", urban=SGAIN$urban)[is.na(IND2011_mask$totbiom_cons),],
+  data.frame(value = WSGAINCP$totbiom_cons, quintile = WSGAINCP$exp_quintile, group = "WSGAIN-CP", variable = "totbiom_cons", urban=WSGAINCP$urban)[is.na(IND2011_mask$totbiom_cons),],
+  data.frame(value = WSGAINGP$totbiom_cons, quintile = WSGAINGP$exp_quintile, group = "WSGAIN-GP", variable = "totbiom_cons", urban=WSGAINGP$urban)[is.na(IND2011_mask$totbiom_cons),],
+  
+  data.frame(value = IND2011_noNA$elec_cons, quintile = IND2011_noNA$exp_quintile, group = "0riginal", variable = "elec_cons", urban = IND2011_noNA$urban)[is.na(IND2011_mask$elec_cons),],
+  data.frame(value = missF$elec_cons, quintile = missF$exp_quintile, group = "MissForest", variable = "elec_cons", urban = missF$urban)[is.na(IND2011_mask$elec_cons),],
+  data.frame(value = imp_mice$elec_cons, quintile = imp_mice$exp_quintile, group = "MICE", variable = "elec_cons", urban = imp_mice$urban)[is.na(IND2011_mask$elec_cons),],
+  data.frame(value = areg$elec_cons, quintile = areg$exp_quintile, group = "aregImpute", variable = "elec_cons", urban=areg$urban),
+  data.frame(value = SGAIN$elec_cons, quintile = SGAIN$exp_quintile, group = "SGAIN", variable = "elec_cons", urban=SGAIN$urban)[is.na(IND2011_mask$elec_cons),],
+  data.frame(value = WSGAINCP$elec_cons, quintile = WSGAINCP$exp_quintile, group = "WSGAIN-CP", variable = "elec_cons", urban=WSGAINCP$urban)[is.na(IND2011_mask$elec_cons),],
+  data.frame(value = WSGAINGP$elec_cons, quintile = WSGAINGP$exp_quintile, group = "WSGAIN-GP", variable = "elec_cons", urban=WSGAINCP$urban)[is.na(IND2011_mask$elec_cons),],
+  
+  data.frame(value = IND2011_noNA$gas_cons, quintile = IND2011_noNA$exp_quintile, group = "0riginal", variable = "gas_cons", urban = IND2011_noNA$urban)[is.na(IND2011_mask$gas_cons),],
+  data.frame(value = missF$gas_cons, quintile = missF$exp_quintile, group = "MissForest", variable = "gas_cons", urban = missF$urban)[is.na(IND2011_mask$gas_cons),],
+  data.frame(value = imp_mice$gas_cons, quintile = imp_mice$exp_quintile, group = "MICE", variable = "gas_cons", urban = imp_mice$urban)[is.na(IND2011_mask$gas_cons),],
+  data.frame(value = areg$gas_cons, quintile = areg$exp_quintile, group = "aregImpute", variable = "gas_cons", urban=areg$urban),
+  data.frame(value = SGAIN$gas_cons, quintile = SGAIN$exp_quintile, group = "SGAIN", variable = "gas_cons", urban=SGAIN$urban)[is.na(IND2011_mask$gas_cons),],
+  data.frame(value = WSGAINCP$gas_cons, quintile = WSGAINCP$exp_quintile, group = "WSGAIN-CP", variable = "gas_cons", urban=WSGAINCP$urban)[is.na(IND2011_mask$gas_cons),],
+  data.frame(value = WSGAINGP$gas_cons, quintile = WSGAINGP$exp_quintile, group = "WSGAIN-GP", variable = "gas_cons", urban=WSGAINGP$urban)[is.na(IND2011_mask$gas_cons),]
+)
+
+# Ensure variables and groups are structured properly
+ggplot(combined, aes(x = group, y = value, fill = group)) +
+  geom_boxplot() +
+  facet_wrap(~variable, scales = "free", nrow = 1) +  # Facet by variable with one row
+  scale_fill_manual(
+    values = c("lightyellow",  "lightgreen", "skyblue","darkblue",  "pink", "orange", "coral"),
+    name = "Imputation Method"
+  ) +
+  labs(
+    title = "IND2011: Range of Imputed Variable Values",
+    x = "",
+    y = "Range of Values"
+  ) +
+  theme_minimal() +
+  theme(
+    strip.text = element_text(size = 12, face = "bold"),  # Format facet labels
+    axis.text.x = element_blank(),   # Rotate x-axis labels
+    plot.title = element_text(hjust = 0.5, size = 18),
+    legend.position = "right"
+  )
+
+```
+
+
+
+

@@ -1,0 +1,91 @@
+---
+title: "Creating Datasets for Evaluation"
+author: "Valentina Heinze"
+date: "2025-01-16"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r packages, echo=FALSE, include=FALSE, warning=FALSE, message=FALSE}
+library(pacman)
+library(here)
+library(kableExtra)
+library(scales)
+library(modelsummary)
+library(countrycode)
+library(WDI)
+library(zoo)
+library(dplyr)
+library(tidyr)
+library(stringr)
+library(readr)
+library(naniar)
+library(patchwork)
+library(tidylog)
+library(ggplot2)
+library(ggridges)
+library(ggrepel)
+library(gridExtra)
+library(openxlsx)
+library(corrplot)
+library(writexl)
+library(readr)
+library(missForest)
+library(corrplot)
+library(knitr)
+library(Hmisc)
+library(rms)
+```
+
+```{r}
+datasets <- c("2020.RUS.csv","2020.VNM.csv","2021.MNG.csv","2017.GHA.csv","2018.ARM.csv")
+ARM2018 <- read.csv("cleaned_df/2018.ARM.csv")
+IND2011 <- read.csv("cleaned_df/2011.IND.csv")
+```
+
+Subset to data without NA
+```{r}
+ARM2018 <- ARM2018 %>% 
+  filter(!is.na(totbiom_cons), !is.na(gas_cons), !is.na(elec_cons))
+IND2011 <- IND2011 %>% 
+  filter(!is.na(totbiom_cons), !is.na(gas_cons), !is.na(elec_cons),!is.na(hhsize))
+```
+
+
+```{r}
+#noNA <- ARM2018
+IND2011_noNA <- IND2011
+#write_csv(ARM2018, "cleaned_df/ARM2018_noNA.csv")
+write_csv(IND2011_noNA, "data/IND2011_noNA.csv")
+```
+
+
+Apply a mask that randomly sets 20% of observations in the target variables to NA.
+```{r mask}
+set.seed(123)
+
+cols_to_modify <- c("totbiom_cons", "gas_cons", "elec_cons")
+
+for (col in cols_to_modify) {
+
+  na_mask <- sample(c(TRUE, FALSE), size = nrow(ARM2018),
+                    replace = TRUE, prob = c(0.2, 0.8))
+  ARM2018[[col]][na_mask] <- NA   # Set 20% of the values in the column to NA
+  
+}
+
+for (col in cols_to_modify) {
+  na_mask <- sample(c(TRUE, FALSE), size = nrow(IND2011),
+                    replace = TRUE, prob = c(0.2, 0.8))
+  IND2011[[col]][na_mask] <- NA
+  
+}
+
+
+#write_csv(ARM2018, "cleaned_df/ARM2018_masked.csv")
+write_csv(IND2011, "data/IND2011_masked.csv")
+```
+
