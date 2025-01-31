@@ -1,0 +1,1030 @@
+---
+title: "Clustering for outlier detection"
+author: "Míra Radakovic"
+date: "2024-12-31"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Get data
+
+```{r packages}
+#install.packages("pacman")
+library(pacman)
+
+# misc
+#
+p_load(here, kableExtra, scales, modelsummary, countrycode, WDI, zoo)
+
+# tidyverse
+#
+p_load(dplyr, tidyr, stringr, readr, naniar, patchwork, tidylog, ggplot2,
+       ggridges, ggrepel)
+```
+
+```{r data}
+region_data <- readRDS("MICRODATA_ALLYEAR_PROCESSED.RDS") %>% 
+  filter(!is.na(exp), !is.na(hhsize), !is.na(exp_cap_group))
+
+get_consexp_cap <- function(countries, years) {
+  
+  data <- WDI(country = countries, indicator = c("NE.CON.PRVT.PP.KD", "SP.POP.TOTL"), 
+              start = min(years), end = max(years)) %>% 
+    dplyr::mutate(iso3c = countrycode(iso2c, origin = "iso2c", destination = "iso3c")) %>% 
+    dplyr::rename(hhconsexp2017ppp = `NE.CON.PRVT.PP.KD`,
+                  pop = `SP.POP.TOTL`) %>% 
+    dplyr::mutate(hhconsexp2017ppp = round(hhconsexp2017ppp / pop))
+  
+  data_filtered <- data %>%
+    dplyr::filter(year %in% years) %>%
+    arrange(iso3c, year) %>%
+    select(country = iso3c, year, hhconsexp2017ppp)
+  
+  return(data_filtered)
+  
+}
+
+# Load consumption expenditure data
+consexp_capdata <- get_consexp_cap(unique(region_data$country), unique(region_data$year))
+
+```
+
+## Subset data
+
+
+
+```{r subset}
+first_subset <- region_data[,c("year", "country", "hhid", "hhweight", "urban", "hhsize", "head_age", "head_literate", "nrooms", "tv", "music", "fridge", "exp", "exp_cap_group")]
+
+
+# Subset the dataframe to unique country-year
+# Create a list of dataframes for each unique Country-Year combination
+
+df_list <- split(first_subset, interaction(first_subset$year, first_subset$country))
+
+df_list <- Filter(function(x) nrow(x) > 0, df_list)
+
+```
+
+## A. LOF clustering
+
+This approach does not work for the datasets that are too big and computationally
+this become heavy:
+- 2. Brazil 2002
+- 3. Brazil 2008
+- 4. Brazil 2017
+- 9. India 2004
+- 10. India 2011
+- 13. Mexico 2020
+- 18. Russia 2020
+- 22. South Africa 2014
+
+
+```{r LOF packages}
+library(cluster)  # For Gower's distance
+library(factoextra)  # For visualization
+library(dbscan)  # For DBSCAN and OPTICS
+library(Rtsne)  # For t-SNE visualization
+library(ggplot2)
+library(cowplot)
+```
+
+```{r LOF function , warning=FALSE}
+
+LOF_process <- function(df, df_name, lof_k = 5, outlier_quantile = 0.95) {
+  
+  vars_to_process <- c("head_age", "nrooms", "hhsize", "exp")
+  
+  # Separate urban-rural
+  ind_urb <- which(df$urban == 1)
+  df_urb <- df[df$urban == 1,]
+  rownames(df_urb) <- ind_urb
+  df_urb <- df_urb[,vars_to_process]
+  
+  ind_rur <- which(df$urban == 0)
+  df_rur <- df[df$urban == 0,]
+  rownames(df_rur) <- ind_rur
+  df_rur <- df_rur[,vars_to_process]
+  
+  
+  # Compute Gower distance
+  gower_dist_u <- daisy(df_urb, metric = "gower")
+  gower_dist_r <- daisy(df_rur, metric = "gower")
+    
+  # Compute LOF
+  lof_scores_u <- lof(as.matrix(gower_dist_u), minPts = lof_k)
+  lof_scores_r <- lof(as.matrix(gower_dist_r), minPts = lof_k)
+    
+  # Add LOF scores to the dataframe
+  df_urb$LOF <- lof_scores_u
+  df_rur$LOF <- lof_scores_r
+  
+  
+  df_urb$index <- rownames(df_urb)
+  df_rur$index <- rownames(df_rur)
+  
+  combined_df <- rbind(df_urb, df_rur)
+  combined_df$index <- as.numeric(combined_df$index)
+
+  # Sort by rownames
+  sorted_df <- combined_df[order(combined_df$index), ]
+
+  
+  # Plot the data highlighting outliers
+  plot(sorted_df$LOF, type = "h", main = df_name)
+  abline(h = 3, col = "red", lwd = 2)
+
+  # Save outliers
+  outliers <- which(sorted_df$LOF > 3)
+  
+  
+  # Return the plot and other results if needed
+  return(outliers)
+}
+```
+
+Now we apply this method to all dataframes (meaning each country year combination).
+
+```{r LOF Armenia 2018, warning=FALSE}
+
+LOF_outliers <- list()
+
+
+LOF_outliers[[1]] <- LOF_process(df_list[[1]], names(df_list)[1])
+
+```
+
+
+```{r LOF Ethipia 2018, warning=FALSE}
+
+
+LOF_outliers[[5]] <- LOF_process(df_list[[5]], names(df_list)[5])
+
+```
+```{r LOF Ghana 2005, warning=FALSE}
+
+
+LOF_outliers[[6]] <- LOF_process(df_list[[6]], names(df_list)[6])
+
+```
+```{r LOF Ghana 2017, warning=FALSE}
+
+
+LOF_outliers[[7]] <- LOF_process(df_list[[7]], names(df_list)[7])
+
+```
+
+```{r LOF Guatemala 2014, warning=FALSE}
+
+
+LOF_outliers[[8]] <- LOF_process(df_list[[8]], names(df_list)[8])
+
+```
+
+
+
+
+
+
+
+
+
+```{r LOF Cambodia 2014, warning=FALSE}
+
+
+LOF_outliers[[11]] <- LOF_process(df_list[[11]], names(df_list)[11])
+
+```
+```{r LOF Cambodia 2019, warning=FALSE}
+
+
+LOF_outliers[[12]] <- LOF_process(df_list[[12]], names(df_list)[12])
+
+```
+```{r LOF Mongolia 2010, warning=FALSE}
+
+
+LOF_outliers[[14]] <- LOF_process(df_list[[14]], names(df_list)[14])
+
+```
+```{r LOF Mongolia 2021, warning=FALSE}
+
+
+LOF_outliers[[15]] <- LOF_process(df_list[[15]], names(df_list)[15])
+
+```
+```{r LOF Nigeria 2018, warning=FALSE}
+
+
+LOF_outliers[[16]] <- LOF_process(df_list[[16]], names(df_list)[16])
+
+```
+```{r LOF Nepal 2019, warning=FALSE}
+
+
+LOF_outliers[[17]] <- LOF_process(df_list[[17]], names(df_list)[17])
+
+```
+```{r LOF Uganda 2019, warning=FALSE}
+
+
+LOF_outliers[[19]] <- LOF_process(df_list[[19]], names(df_list)[19])
+
+```
+```{r LOF Vietnam 2010, warning=FALSE}
+
+
+LOF_outliers[[20]] <- LOF_process(df_list[[20]], names(df_list)[20])
+
+```
+```{r LOF Vietnam 2020, warning=FALSE}
+
+
+LOF_outliers[[21]] <- LOF_process(df_list[[21]], names(df_list)[21])
+
+```
+
+
+## B. KAMILA algorithm
+
+```{r KAMILA packages , warning=FALSE}
+
+#install.packages("kamila")
+library(kamila)
+#install.packages("ape")
+library(ape)
+library(plotly)
+library(cluster)
+#install.packages("htmltools", dependencies = TRUE)
+library(htmltools)
+```
+
+```{r KAMILA function, warning=FALSE}
+
+KAMILA_outliers <- list()
+
+kamila_process <- function(df, df_name){
+  
+  set.seed(2)
+  # Preprocess
+  df <- df[,5:ncol(df)]
+  
+  categorical_columns <- c("urban", "head_literate", "tv", "music", "fridge", "exp_cap_group")
+  continuous_columns <- c("hhsize", "head_age", "nrooms", "exp")
+  
+  df[categorical_columns] <- lapply(df[categorical_columns], as.factor)
+  
+  # Clustering
+  kamila_model <- kamila(
+  conVar = df[continuous_columns], 
+  catFactor = df[categorical_columns], 
+  numClust = 12,        # Number of clusters
+  numInit = 10         # Number of initializations for stability
+  )
+  
+  # PCA
+  gower_dist <- daisy(df, metric = "gower")
+  
+  pcoa_result <- pcoa(as.dist(gower_dist))
+  
+  pcoa_coords <- as.data.frame(pcoa_result$vectors[, 1:3])
+  names(pcoa_coords) <- c("PC1", "PC2", "PC3")
+  
+  pcoa_coords$Cluster <- as.factor(kamila_model$finalMemb)
+  
+  # Visualize 3D
+  
+  fig <- plot_ly(
+    data = pcoa_coords,
+    x = ~PC1,
+    y = ~PC2,
+    z = ~PC3,
+    color = ~Cluster,
+    type = "scatter3d",
+    mode = "markers",
+    marker = list(size = 5)
+  ) %>%
+    layout(
+      title = df_name
+      )
+  
+  fig
+
+  # 2D plot
+
+  #fig_2 <- ggplot(data = pcoa_coords, aes(x = PC1, y = PC2, color = Cluster)) +
+  #  geom_point(size = 3, alpha = 0.8) + # Points with transparency
+  #  labs(
+  #    title = "2D Clustering Visualization",
+  #    x = "Principal Coordinate 1 (PC1)",
+  #    y = "Principal Coordinate 2 (PC2)"
+  #  ) +
+  #  theme_minimal()                  # Clean minimal theme
+  
+    
+  # Detect too small clusters (n<5)
+  
+  cluster_sizes <- table(kamila_model$finalMemb)
+
+  # Flag outliers in small clusters
+  outlier_threshold <- 5 # Define minimum cluster size
+  outliers <- which(kamila_model$finalMemb %in% names(cluster_sizes[cluster_sizes < outlier_threshold]))
+  
+  # Print outlier indices
+  return(list(outliers, fig))
+  
+}
+```
+
+
+
+```{r KAMILA Armenia 2018}
+results <- kamila_process(df_list[[1]], names(df_list)[1])
+KAMILA_outliers [[1]] <- results[[1]]
+results[[2]]
+```
+```{r}
+KAMILA_outliers [[1]]
+```
+
+## C. Traditional 3 sd from mean approach
+
+```{r Standard function}
+replace_outliers <- function(data, column, group_column) {
+  # Create a copy of the data to avoid modifying the original
+  modified_data <- data
+  
+  # Ensure the grouping column exists
+  if (!group_column %in% colnames(data)) {
+    stop(paste("Column", group_column, "does not exist in the dataframe."))
+  }
+  
+  # Initialize a vector to store outlier indices
+  outlier_indices <- c()
+  
+  # Iterate over the unique values of the group column
+  for (group_value in unique(data[[group_column]])) {
+    # Subset the data for the current group
+    group_data <- data[data[[group_column]] == group_value, ]
+    
+    # Compute mean and standard deviation for the group
+    mean_val <- mean(group_data[[column]], na.rm = TRUE)
+    sd_val <- sd(group_data[[column]], na.rm = TRUE)
+    
+    # Identify outliers within the group
+    is_outlier <- abs(group_data[[column]] - mean_val) > (3 * sd_val)
+    
+    # Find the indices of the outliers in the original data
+    group_indices <- which(data[[group_column]] == group_value & is_outlier)
+    outlier_indices <- c(outlier_indices, group_indices)
+    
+    # Replace outliers with NA in the modified data
+    modified_data[[column]][data[[group_column]] == group_value & is_outlier] <- NA
+  }
+  
+  # Count total outliers
+  total_outliers <- sum(is.na(modified_data[[column]]) & !is.na(data[[column]]))
+  
+  return(list(data = modified_data, count = total_outliers, outlier_indices = outlier_indices))
+}
+```
+
+
+```{r Standard applied, warning=FALSE}
+STANDARD_outliers <- list()
+
+vars_to_process <- c("head_age", "nrooms", "hhsize", "exp")
+df_list_clean <- df_list
+outlier_count <- data.frame(matrix(0, nrow = length(vars_to_process), ncol = length(df_list)))
+colnames(outlier_count) <- names(df_list)
+rownames(outlier_count) <- vars_to_process
+
+i <- 0
+
+for (df_name in names(df_list)) {
+  i <- i + 1
+  df <- df_list[[df_name]]
+  for (var in vars_to_process) {
+    if (var %in% colnames(df)) {
+      result <- replace_outliers(df, var, "urban")
+      #result <- replace_outliers(df, var)
+      df <- result$data
+      outlier_count[var, df_name] <- result$count
+    }
+  }
+  df_list_clean[[df_name]] <- df  # Update the cleaned dataframe in the list
+  STANDARD_outliers[[i]] <- result$outlier_indices
+}
+```
+
+
+```{r compare LOF and STANDARD}
+
+# Initialize a vector to store the count of common numbers
+common_counts <- numeric(length(LOF_outliers))
+
+# Loop over each position in the lists
+for (i in 1:length(LOF_outliers)) {
+  # Get the vectors at the ith position
+  vector1 <- LOF_outliers[[i]]
+  vector2 <- STANDARD_outliers[[i]]
+  
+  # Find the intersection of the two vectors and count the common elements
+  common_counts[i] <- length(intersect(LOF_outliers, STANDARD_outliers))
+}
+
+# Print the result
+print(common_counts)
+```
+
+Let's investigate the three methods for the first data frame, Armenia 2018.
+```{r}
+LOF_outliers[[1]]
+```
+```{r}
+KAMILA_outliers[[1]]
+```
+```{r}
+STANDARD_outliers[[1]]
+```
+While the standard approach seems sound, all it does is cutting the 'edge' values
+for each feature, regardless of any connection to other features of the observation.
+The LOF approach considers the closest points to the observation, so it considers 
+contextual outliers. However, it can only account for numeric variables.
+The Kamila algorithm has the capability to consider categorical and numeric 
+variables, however the number of clusters need to be predetermined.
+
+
+## D. Multiple Linear Regression
+
+We fit a multiple linear regression to explain the variable 'exp'. Then we compare
+the difference between the prediction and the actual 'exp' value and where the
+residual is more then 2 standard deviations away from the prediction, we flag
+as outlier.
+
+```{r Regression package}
+
+library(MASS)
+library(car)
+
+```
+
+
+```{r}
+
+REGRESSION_outliers <- list()
+
+regression_process <- function(df, df_name){
+  
+  data <- df[, colSums(is.na(df)) < nrow(df)]
+  data <- data[,6:ncol(data)-1]
+  data <- drop_na(data)
+
+  # Fit the multiple linear regression model
+  model <- lm(exp ~ ., data = data)
+
+  # Stepwise selection
+  stepwise_model <- stepAIC(model, direction = "both")
+
+  # Summary of the optimized model
+  #summary(stepwise_model)
+
+  model <- stepwise_model
+
+  # Check for multicollinearity
+  vif_values <- vif(model)  # Variance Inflation Factors
+  print(vif_values)
+
+  # Residual diagnostics
+  data$standardized_residuals <- rstandard(model)  # Standardized residuals
+  data$cooks_distance <- cooks.distance(model)    # Cook's distance
+  data$leverage <- hatvalues(model)               # Leverage scores
+
+  # Outlier thresholds
+  residual_threshold <- 2  # Standardized residuals > 2 are potential outliers
+  cook_threshold <- 4 / nrow(data)  # Common heuristic for Cook's distance
+  leverage_threshold <- 2 * (ncol(data) / nrow(data))  # Rule of thumb for leverage
+  
+  # Flag potential outliers
+  data$outlier <- with(data, 
+      abs(standardized_residuals) > residual_threshold | 
+      cooks_distance > cook_threshold | 
+      leverage > leverage_threshold
+  )
+
+  # View flagged outliers
+  # Get row numbers of outliers
+  outliers <- which(data$outlier == TRUE)
+  
+  return(outliers)
+}
+```
+
+```{r regression calculation, results = 'hide'}
+
+for (i in 1:length(df_list)){
+  REGRESSION_outliers[[i]] <- regression_process(df_list[[i]], names(df_list)[i])
+}
+
+names(REGRESSION_outliers) <- names(df_list)
+
+```
+
+
+## E. Random Forest Outlier detection
+
+We then use a random forest model to do the same as with the multiple linear 
+regression.
+```{r forest package }
+
+library(randomForest)
+```
+
+
+```{r forest function }
+
+FOREST_outliers <- list()
+
+forest_process <- function(df, df_name){
+  
+  data <- df[, colSums(is.na(df)) < nrow(df)]
+  data <- data[,6:ncol(data)-1]
+  data <- drop_na(data)
+
+  # Fit random forest model
+  set.seed(123)  # For reproducibility
+  rf_model <- randomForest(exp ~ ., data = data, importance = TRUE, ntree = 500)
+
+  # Predict values for exp
+  data$predicted_exp <- predict(rf_model)
+
+  # Compute residuals
+  data$residuals <- data$exp - data$predicted_exp
+  
+  # Define residual threshold for outliers
+  residual_threshold <- 2 * sd(data$residuals)  # 2 standard deviations
+  
+  # Flag potential outliers
+  data$outlier <- abs(data$residuals) > residual_threshold
+
+  # Get row numbers of outliers
+  outlier <- which(data$outlier == TRUE)
+  return(outlier)
+}
+
+```
+
+```{r forest calculation, results = 'hide', warning=FALSE}
+
+for (i in 1:length(df_list)){
+  FOREST_outliers[[i]] <- forest_process(df_list[[i]], names(df_list)[i])
+}
+
+names(FOREST_outliers) <- names(df_list)
+
+```
+## Find commonly detected outliers
+
+Comparing LOF and Regression there are not too many commonalities.
+```{r LOF-Reg comparison}
+# Find common elements for each pair of vectors
+common_list <- mapply(intersect, LOF_outliers, REGRESSION_outliers, SIMPLIFY = FALSE)
+
+# Print the result
+common_list
+```
+Compare LOF and forest, we again do not find many in the intersection.
+```{r LOF-forest compare}
+# Find common elements for each pair of vectors
+common_list <- mapply(intersect, LOF_outliers, FOREST_outliers, SIMPLIFY = FALSE)
+
+# Print the result
+common_list
+```
+Finally we compare forest and regression, and here we find quite a lot in the
+intersect.
+```{r Reg-forest compare}
+
+# Find common elements for each pair of vectors
+common_list <- mapply(intersect, REGRESSION_outliers, FOREST_outliers, SIMPLIFY = FALSE)
+
+# Print the result
+common_sum <- lapply(common_list, length)
+common_sum
+
+```
+```{r}
+reg_len <- lapply(REGRESSION_outliers, length)
+percent_common <- mapply(`/`, common_sum, reg_len, SIMPLIFY = FALSE)
+percent_common
+```
+```{r}
+mean(unlist(percent_common))
+```
+
+Approximately 55% of the regression selected outliers are also selected by the
+random forest model as well.
+
+## Extended dataset
+
+The new subsets contain more columns then ebfore to allow the models to detect more 
+patterns and interdependencies.
+```{r large subset}
+
+large_subset <- region_data[,c("year", "country","admin1", "admin2", "hhid", "hhweight", "urban", "hhsize", "head_age","head_male", "head_literate", "nrooms", "tv", "music", "fridge", "exp",
+                               "totbiom_cons", "elec_cons", "gas_cons", "frwd_exp", "frwd_cons", "petrol_exp", "scooter", "car", "publictransport_exp", "publictransport", "washmach", "elec_any" )]
+
+
+
+
+
+# Subset the dataframe to unique country-year
+# Create a list of dataframes for each unique Country-Year combination
+
+df_list_large <- split(large_subset, interaction(large_subset$year, large_subset$country))
+
+df_list_large <- Filter(function(x) nrow(x) > 0, df_list_large)
+
+```
+
+Let's see the continuous columns, where we can do outlier detection.
+
+```{r}
+summary(df_list_large[[2]])
+```
+
+Continuous columns are: hhsize, head_age, nrooms, exp, totbiom_cons, elec_cons,
+gas_cons, frwd_exp, frwd_cons, petrol_exp, publictransport_exp.
+
+```{r continuous variables}
+cont_var <- c("hhsize", "head_age", "nrooms", "exp", "totbiom_cons", "elec_cons",
+"gas_cons", "frwd_exp", "frwd_cons", "petrol_exp", "publictransport_exp")
+```
+
+The regression function
+```{r}
+# Initialize the output list
+REGRESSION_outliers_large <- list()
+
+# Define the modified function
+regression_process_large <- function(df, df_name, dependent_columns) {
+  
+  # Retain non metadata columns
+  df <- df[, 7:ncol(df)]
+  
+  # Subset the data to include only complete cases
+  data <- df[, colSums(is.na(df)) < nrow(df)]
+  
+  # Remove column from list
+  dependent_columns <- dependent_columns[!sapply(df[dependent_columns], function(col) all(is.na(col)))]
+
+  
+  # Loop through each dependent column
+  for (col in dependent_columns) {
+    
+    # Subset the data to include relevant columns
+    #data_subset <- data[, c(col, setdiff(names(data), col))]
+    data_subset <- data
+    
+    # Drop rows with NA values
+    data_subset <- drop_na(data_subset)
+    
+    # drop subset for non metadata columns - done already above
+    #data_subset <- data_subset[, 7:ncol(data_subset)]
+    
+    # Fit the multiple linear regression model
+    model <- lm(as.formula(paste(col, "~ .")), data = data_subset)
+    
+    # Stepwise selection
+    stepwise_model <- stepAIC(model, direction = "both")
+    
+    # Update the model with stepwise selection
+    model <- stepwise_model
+    
+    # Check for multicollinearity (optional, if needed)
+    # vif_values <- vif(model)
+    # print(vif_values)
+    
+    # Residual diagnostics
+    data_subset$standardized_residuals <- rstandard(model)
+    data_subset$cooks_distance <- cooks.distance(model)
+    data_subset$leverage <- hatvalues(model)
+    
+    # Outlier thresholds
+    residual_threshold <- 2
+    cook_threshold <- 4 / nrow(data_subset)
+    leverage_threshold <- 2 * (ncol(data_subset) / nrow(data_subset))
+    
+    # Flag potential outliers
+    data_subset$outlier <- with(data_subset,
+      abs(standardized_residuals) > residual_threshold |
+      cooks_distance > cook_threshold |
+      leverage > leverage_threshold
+    )
+    
+    # Get row numbers of outliers
+    outliers <- which(data_subset$outlier == TRUE)
+    
+    # Store the outliers in the output list
+    if (!(df_name %in% names(REGRESSION_outliers_large))) {
+      REGRESSION_outliers_large[[df_name]] <- list()
+    }
+    REGRESSION_outliers_large[[df_name]][[col]] <- outliers
+  }
+  
+  # Return the structured list of outliers
+  return(REGRESSION_outliers_large)
+}
+
+```
+
+```{r, results = 'hide'}
+REG_overall <- list()
+
+for (i in 1:length(df_list_large)){
+  REG_overall[[i]] <- regression_process_large(df_list_large[[i]], names(df_list_large)[i], cont_var)
+}
+
+#names(REG_overall) <- names(df_list_large)
+
+```
+
+```{r}
+REG_overall <- lapply(REG_overall, function(x) x[[1]])
+names(REG_overall) <- names(df_list_large)
+
+```
+
+Now the same for random forest.
+
+```{r}
+FOREST_outliers_large <- list()
+
+forest_process_large <- function(df, df_name, dependent_columns) {
+  
+  # Retain non metadata columns
+  df <- df[, 7:ncol(df)]
+  
+  # Remove column from list
+  dependent_columns <- dependent_columns[!sapply(df[dependent_columns], function(col) all(is.na(col)))]
+  
+  # Remove columns with all NA values
+  df <- df[, colSums(is.na(df)) < nrow(df)]
+  
+  
+  
+  # Initialize an empty list for the dataset
+  #FOREST_outliers[[df_name]] <- list()
+  
+  # Loop through each dependent column
+  for (col in dependent_columns) {
+    
+    # Subset the data to include the dependent column and predictors
+    data <- df
+    data <- drop_na(data)
+    
+    
+    # Fit random forest model
+    set.seed(123)  # For reproducibility
+    formula <- as.formula(paste(col, "~ ."))
+    rf_model <- randomForest(formula, data = data, importance = TRUE, ntree = 50)
+    
+    # Predict values for the dependent variable
+    data$predicted <- predict(rf_model)
+    
+    # Compute residuals
+    data$residuals <- data[[col]] - data$predicted
+    
+    # Define residual threshold for outliers
+    residual_threshold <- 2 * sd(data$residuals, na.rm = TRUE)  # 2 standard deviations
+    
+    # Flag potential outliers
+    data$outlier <- abs(data$residuals) > residual_threshold
+    
+    # Get row numbers of outliers
+    outliers <- which(data$outlier == TRUE)
+    
+    # Store the outliers in the output list
+    FOREST_outliers_large[[df_name]][[col]] <- outliers
+  }
+  
+  # Return the structured list of outliers
+  return(FOREST_outliers_large)
+}
+
+```
+
+```{r, results = 'hide'}
+
+#FOREST_overall <- list()
+
+#for (i in 1:length(df_list_large)){
+#  FOREST_overall[[i]] <- forest_process_large(df_list_large[[i]], names(df_list_large)[i], cont_var)
+#  print(i)
+#}
+
+
+
+```
+```{r}
+
+#FOREST_overall <- lapply(FOREST_overall, function(x) x[[1]])
+#names(FOREST_overall) <- names(df_list_large)
+
+```
+
+
+```{r}
+#save(FOREST_overall, file = "FOREST_outliers.rda")
+```
+
+
+```{r}
+load("FOREST_outliers.rda")
+```
+
+Compare and save the commonly flagged observations.
+
+```{r}
+compare_nested_lists <- function(list1, list2) {
+  # Initialize the result list
+  result <- list()
+  
+  # Get the common top-level names
+  top_level_names <- intersect(names(list1), names(list2))
+  
+  # Loop through each top-level name
+  for (name in top_level_names) {
+    # If both elements are lists, compare them recursively
+    if (is.list(list1[[name]]) && is.list(list2[[name]])) {
+      nested_result <- compare_nested_lists(list1[[name]], list2[[name]])
+      # Only include non-empty results
+      if (length(nested_result) > 0) {
+        result[[name]] <- nested_result
+      }
+    } else {
+      # If they are not lists, compare their values
+      common_values <- intersect(list1[[name]], list2[[name]])
+      if (length(common_values) > 0) {
+        result[[name]] <- common_values
+      }
+    }
+  }
+  
+  return(result)
+}
+
+```
+
+
+```{r}
+COMMON_overall <- compare_nested_lists(REG_overall, FOREST_overall)
+```
+
+Replace these commonly detected outliers in the data.
+```{r}
+replace_with_na <- function(dataframes, structured_list) {
+  # Ensure both lists have the same length
+  if (length(dataframes) != length(structured_list)) {
+    stop("The number of dataframes and structured list elements must match.")
+  }
+  
+  # Loop through the dataframes and structured list
+  for (i in seq_along(dataframes)) {
+    # Current dataframe and structured list element
+    df <- dataframes[[i]]
+    lists <- structured_list[[i]]
+    
+    # Check that the structured list has names
+    if (is.null(names(lists))) {
+      stop("Structured list elements must have names corresponding to column names.")
+    }
+    
+    # Iterate over the names in the structured list element
+    for (col_name in names(lists)) {
+      # Check if the column exists in the dataframe
+      if (col_name %in% names(df)) {
+        # Get the row indices to replace with NA
+        row_indices <- lists[[col_name]]
+        
+        # Replace the specified rows in the column with NA
+        df[row_indices, col_name] <- NA
+      }
+    }
+    
+    # Update the data frame in the list
+    dataframes[[i]] <- df
+  }
+  
+  return(dataframes)
+}
+
+```
+
+```{r}
+df_list_removed <- replace_with_na(df_list_large, COMMON_overall)
+```
+
+Export and save.
+```{r}
+export_and_zip <- function(dataframes, zip_name = "dataframes.zip") {
+  # Create a temporary directory to store CSV files
+  temp_dir <- tempdir()
+  
+  # Export each data frame to a CSV file
+  csv_files <- c()  # To store paths of created CSV files
+  for (name in names(dataframes)) {
+    # Define the CSV file name
+    csv_file <- file.path(temp_dir, paste0(name, ".csv"))
+    
+    # Write the data frame to a CSV file
+    write.csv(dataframes[[name]], file = csv_file, row.names = FALSE)
+    
+    # Add the file to the list of CSV files
+    csv_files <- c(csv_files, csv_file)
+  }
+  
+  # Create a zip file containing all CSV files
+  zip(zipfile = zip_name, files = csv_files)
+  
+  # Return the path to the zip file
+  return(file.path(getwd(), zip_name))
+}
+
+```
+
+```{r}
+
+export_and_zip(df_list_removed, "cleaned_df.zip")
+
+```
+
+## Visualize missingness
+
+```{r}
+library(ggplot2)
+
+# Function to calculate percentages
+calculate_proportions <- function(data_list, outliers_list) {
+  results <- data.frame(
+    Dataset = character(),
+    Category = character(),
+    Percentage = numeric(),
+    stringsAsFactors = FALSE
+  )
+  
+  for (i in seq_along(data_list)) {
+    df <- data_list[[i]]
+    outliers <- outliers_list[[i]]
+    dataset_name <- names(data_list)[i]
+    
+    total_values <- prod(dim(df))
+    
+    # Calculate missing values
+    missing_count <- sum(is.na(df))
+    missing_percentage <- (missing_count / total_values) * 100
+    
+    # Calculate outliers
+    outlier_count <- sum(is.na(outliers)) - missing_count
+    outlier_percentage <- (outlier_count / total_values) * 100
+    
+    # Calculate remaining values
+    remaining_percentage <- 100 - missing_percentage - outlier_percentage
+    
+    # Append results
+    results <- rbind(
+      results,
+      data.frame(Dataset = dataset_name, Category = "Missing", Percentage = missing_percentage),
+      data.frame(Dataset = dataset_name, Category = "Outliers", Percentage = outlier_percentage),
+      data.frame(Dataset = dataset_name, Category = "Remaining", Percentage = remaining_percentage)
+    )
+  }
+  
+  return(results)
+}
+
+# Function to visualize the proportions
+visualize_proportions <- function(proportions_df) {
+  ggplot(proportions_df, aes(x = Dataset, y = Percentage, fill = Category)) +
+    geom_bar(stat = "identity", position = "stack") +
+    labs(
+      title = "Proportion of Missing, Outliers, and Remaining Data",
+      x = "Dataset",
+      y = "Percentage"
+    ) +
+    theme_minimal() +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+    scale_fill_manual(values = c("Missing" = "yellow", "Outliers" = "red", "Remaining" = "orange"))
+}
+```
+
+```{r}
+proportions_df <- calculate_proportions(df_list_large, df_list_removed)
+visualize_proportions(proportions_df)
+```
+
+
+
